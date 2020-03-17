@@ -6,12 +6,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 
 public class Zombie extends GameObject {
-	public Animation<TextureRegion> Walking,Attacking, Dying, Default;
+	public Animation<TextureRegion> Walking, Attacking, Dying, Default;
 
-	public Zombie(int x, int y) {
-		X = TargetX = x;
-		Y = TargetY = y;
+	public Zombie(float x, float y) {
+		super(x, y);
 	}
+
 
 	@Override
 	public void Load() {

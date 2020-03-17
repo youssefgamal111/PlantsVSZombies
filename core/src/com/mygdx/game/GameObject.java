@@ -6,10 +6,16 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public abstract class GameObject {
 	protected float MoveSpeed;
 	float X, Y;
-	float TargetX, TargetY;
 	private boolean CanRemove;
-	private float animationElapsedTime;
+	private float TargetX, TargetY, animationElapsedTime;
 	private Animation<TextureRegion> currentAnimation;
+
+	public GameObject(float x, float y) {
+		X = TargetX = x;
+		Y = TargetY = y;
+		CanRemove = false;
+		Load();
+	}
 
 	public abstract void Load();
 
@@ -19,10 +25,6 @@ public abstract class GameObject {
 
 	public abstract void OnMoveFinished();
 
-	public GameObject() {
-		CanRemove = false;
-		Load();
-	}
 
 	public void SetCurrentAnimation(Animation<TextureRegion> animation) {
 		currentAnimation = animation;
