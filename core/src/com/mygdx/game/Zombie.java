@@ -15,10 +15,10 @@ public class Zombie extends GameObject {
 
 	@Override
 	public void Load() {
-		Default = GifDecoder.loadGIFAnimation(PlayMode.LOOP, Gdx.files.internal("1.gif").read());
-		Walking = GifDecoder.loadGIFAnimation(PlayMode.LOOP, Gdx.files.internal("Zombie.gif").read());
-		Dying = GifDecoder.loadGIFAnimation(PlayMode.NORMAL, Gdx.files.internal("ZombieDie.gif").read());
-		Attacking = GifDecoder.loadGIFAnimation(PlayMode.LOOP, Gdx.files.internal("ZombieAttack.gif").read());
+		Default = GifDecoder.loadGIFAnimation(PlayMode.LOOP, Gdx.files.internal("Zombie\\1.gif").read());
+		Walking = GifDecoder.loadGIFAnimation(PlayMode.LOOP, Gdx.files.internal("Zombie\\Zombie.gif").read());
+		Dying = GifDecoder.loadGIFAnimation(PlayMode.NORMAL, Gdx.files.internal("Zombie\\ZombieDie.gif").read());
+		Attacking = GifDecoder.loadGIFAnimation(PlayMode.LOOP, Gdx.files.internal("Zombie\\ZombieAttack.gif").read());
 		SetCurrentAnimation(Default);
 		super.MoveSpeed = 10;
 
