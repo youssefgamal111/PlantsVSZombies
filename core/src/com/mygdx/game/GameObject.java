@@ -4,34 +4,42 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public abstract class GameObject {
-	public float MoveSpeed;
+	protected float MoveSpeed;
 	float X, Y;
 	float TargetX, TargetY;
 	private boolean CanRemove;
-	public Animation<TextureRegion> currentAnimation;
-
-	public GameObject() {
-		CanRemove = false;
-		Load();
-	}
+	private float animationElapsedTime;
+	private Animation<TextureRegion> currentAnimation;
 
 	public abstract void Load();
+
 	public abstract void OnRemove();
 
 	public abstract void OnMoveStart();
 
 	public abstract void OnMoveFinished();
 
+	public GameObject() {
+		CanRemove = false;
+		Load();
+	}
+
+	public void SetCurrentAnimation(Animation<TextureRegion> animation) {
+		currentAnimation = animation;
+		animationElapsedTime = 0f;
+	}
+
+	public TextureRegion GetCurrentFrame() {
+		return currentAnimation.getKeyFrame(animationElapsedTime);
+	}
+
 	public void Remove() {
 		this.CanRemove = true;
 		OnRemove();
 	}
 
-	public boolean CanRemove(float time) {
-		if (currentAnimation.isAnimationFinished(time) && CanRemove) {
-			return true;
-		}
-		return false;
+	public boolean CanRemove() {
+		return currentAnimation.isAnimationFinished(animationElapsedTime) && CanRemove;
 	}
 
 	public void Move(int x, int y) {
@@ -44,6 +52,7 @@ public abstract class GameObject {
 	}
 
 	public void Render(float deltatime) {
+		animationElapsedTime += deltatime;
 		if (X == TargetX && Y == TargetY)
 			return;
 		if (X > TargetX)

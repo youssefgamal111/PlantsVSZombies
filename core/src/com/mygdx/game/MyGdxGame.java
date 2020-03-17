@@ -10,35 +10,37 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;
-	float elapsed;
 	public ArrayList<GameObject> GameObjects;
-	Zombie z;
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
-		GameObjects = new ArrayList<GameObject>();
-		 z = new Zombie(200,200);
+		GameObjects = new ArrayList<>();
+		Zombie z = new Zombie(200, 200);
+		Zombie y = new Zombie(400, 200);
 		GameObjects.add(z);
+		GameObjects.add(y);
+
 	}
 
 	@Override
 	public void render() {
-		elapsed += Gdx.graphics.getDeltaTime();
-
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
+		//looping through all objects in the game
 		for (Iterator<GameObject> iterator = GameObjects.iterator(); iterator.hasNext(); ) {
 			GameObject gameObject = iterator.next();
-			batch.draw(gameObject.currentAnimation.getKeyFrame(elapsed), gameObject.X, gameObject.Y);
+			batch.draw(gameObject.GetCurrentFrame(), gameObject.X, gameObject.Y);
 			gameObject.Render(Gdx.graphics.getDeltaTime());
-			if (gameObject.CanRemove(elapsed))
+			if (gameObject.CanRemove())
 				iterator.remove();
 		}
-		if(Gdx.input.isTouched())
-		{
-			//z.Move(Gdx.input.getX(), 500-Gdx.input.getY());
-			z.Remove();
+		//looping through all objects in the game
+		if (Gdx.input.isTouched()) {
+			for (GameObject z : GameObjects) {
+				Zombie zz = (Zombie) z;
+				zz.Move(10, 10);
+			}
 		}
 		batch.end();
 	}

@@ -19,24 +19,26 @@ public class Zombie extends GameObject {
 		Walking = GifDecoder.loadGIFAnimation(PlayMode.LOOP, Gdx.files.internal("Zombie.gif").read());
 		Dying = GifDecoder.loadGIFAnimation(PlayMode.NORMAL, Gdx.files.internal("ZombieDie.gif").read());
 		Attacking = GifDecoder.loadGIFAnimation(PlayMode.LOOP, Gdx.files.internal("ZombieAttack.gif").read());
-		currentAnimation = Default;
+		SetCurrentAnimation(Default);
 		super.MoveSpeed = 10;
 
 	}
 
 	@Override
 	public void OnRemove() {
-		currentAnimation =  Dying;
+		SetCurrentAnimation(Dying);
 	}
 
 	@Override
 	public void OnMoveFinished() {
-		currentAnimation = Default;
+		SetCurrentAnimation(Default);
+
 	}
 
 	@Override
 	public void OnMoveStart() {
-		currentAnimation = Walking;
+		SetCurrentAnimation(Walking);
+
 	}
 
 }
