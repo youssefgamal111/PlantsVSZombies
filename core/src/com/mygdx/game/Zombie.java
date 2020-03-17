@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 
 public class Zombie extends GameObject {
-	public Animation<TextureRegion> Walking, Attacking, Dying, Default;
+	private Animation<TextureRegion> Walking, Attacking, Dying, Default;
 
 	public Zombie(float x, float y) {
 		super(x, y);
@@ -22,6 +22,10 @@ public class Zombie extends GameObject {
 		SetCurrentAnimation(Default);
 		super.MoveSpeed = 10;
 
+	}
+
+	public void Kill() {
+		super.Remove();
 	}
 
 	@Override

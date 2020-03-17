@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -39,7 +40,13 @@ public class MyGdxGame extends ApplicationAdapter {
 		if (Gdx.input.isTouched()) {
 			for (GameObject z : GameObjects) {
 				Zombie zz = (Zombie) z;
-				zz.Move(10, 10);
+				zz.Move(Gdx.input.getX(), 500 - Gdx.input.getY());
+			}
+		}
+		if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
+			for (GameObject z : GameObjects) {
+				Zombie zz = (Zombie) z;
+				zz.Kill();
 			}
 		}
 		batch.end();
