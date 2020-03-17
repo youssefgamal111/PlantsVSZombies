@@ -11,7 +11,7 @@ public class DesktopLauncher {
 		config.height = 500;
 		config.width=500;
                  config.title="Plants Vs Zombies";
-                 //config.addIcon(path, Files.FileType.Internal)
+                 config.addIcon("plantsvszombies.png", Files.FileType.Internal);
 		new LwjglApplication(new MyGdxGame(), config);
 	}
 }
