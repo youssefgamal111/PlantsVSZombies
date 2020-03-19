@@ -69,17 +69,13 @@ public abstract class GameObject {
 		if (X == TargetX && Y == TargetY)
 			return;
 		if (X > TargetX)
-			X -= MoveSpeed * deltatime;
+			X = Math.max(X - MoveSpeed * deltatime, TargetX);
 		if (X < TargetX)
-			X += MoveSpeed * deltatime;
+			X = Math.min(X + MoveSpeed * deltatime, TargetX);
 		if (Y > TargetY)
-			Y -= MoveSpeed * deltatime;
+			Y = Math.max(Y - MoveSpeed * deltatime, TargetY);
 		if (Y < TargetY)
-			Y += MoveSpeed * deltatime;
-		if (Math.abs(X - TargetX) < 1.2f)
-			X = TargetX;
-		if (Math.abs(Y - TargetY) < 1.2f)
-			Y = TargetY;
+			Y = Math.min(Y + MoveSpeed * deltatime, TargetY);
 		if (X == TargetX && Y == TargetY) {
 			OnMoveFinished();
 		}

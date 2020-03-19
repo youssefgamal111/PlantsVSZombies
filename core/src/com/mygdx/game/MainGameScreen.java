@@ -59,7 +59,7 @@ public class MainGameScreen implements Screen {
         if (Gdx.input.isTouched()) {
             for (GameObject z : GameObjects) {
                 if (z instanceof Zombie)
-                z.Move(Gdx.input.getX(), 500 - Gdx.input.getY());
+                z.Move(Gdx.input.getX(), PlantVsZombies.WIDTH - Gdx.input.getY());
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.Z)) {

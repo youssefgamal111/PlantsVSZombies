@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PlantVsZombies extends Game {
 
-    public static final int WIDTH = 480;
+    public static final int WIDTH = 720;
     public static final int HEIGHT = 720;
     public static boolean IS_MOBILE = false;
 

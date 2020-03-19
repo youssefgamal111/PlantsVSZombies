@@ -1,4 +1,4 @@
-package com.mygdx.game;
+/*package com.mygdx.game;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -86,3 +86,4 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch.dispose();
 	}
 }
+*/
