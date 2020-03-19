@@ -28,10 +28,10 @@ public class MainGameScreen implements Screen {
         this.game = game;
         GameObjects = new ArrayList<>();
         Zombie z = new NormalZombie(200, 200);
-        //   Zombie y = new NormalZombie(400, 200);
+        Zombie y = new NormalZombie(500, 200);
         Plant p = new PeaShooter(10, 10);
         GameObjects.add(z);
-        //    GameObjects.add(y);
+        GameObjects.add(y);
         GameObjects.add(p);
     }
     @Override
