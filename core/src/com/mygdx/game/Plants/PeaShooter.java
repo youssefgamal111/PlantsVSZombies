@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.mygdx.game.GifDecoder;
 import com.mygdx.game.MainGameScreen;
-import com.mygdx.game.MyGdxGame;
 
 public class PeaShooter extends Plant {
     public PeaShooter(float x, float y) {

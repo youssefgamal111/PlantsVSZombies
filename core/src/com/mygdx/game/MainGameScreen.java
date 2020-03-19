@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.Plants.Pea;
 import com.mygdx.game.Plants.PeaShooter;
 import com.mygdx.game.Plants.Plant;
 import com.mygdx.game.Zombies.NormalZombie;
@@ -27,7 +28,7 @@ public class MainGameScreen implements Screen {
         this.game = game;
         GameObjects = new ArrayList<>();
         Zombie z = new NormalZombie(200, 200);
-        Zombie y = new NormalZombie(400, 200);
+        Zombie y = new NormalZombie(500, 200);
         Plant p = new PeaShooter(10, 10);
         GameObjects.add(z);
         GameObjects.add(y);
@@ -59,7 +60,7 @@ public class MainGameScreen implements Screen {
         if (Gdx.input.isTouched()) {
             for (GameObject z : GameObjects) {
                 if (z instanceof Zombie)
-                z.Move(Gdx.input.getX(), 500 - Gdx.input.getY());
+                z.Move(Gdx.input.getX(), PlantVsZombies.WIDTH - Gdx.input.getY());
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
@@ -78,6 +79,19 @@ public class MainGameScreen implements Screen {
                 }
             }
             time = 0;
+        }
+        for (int i = 0; i < GameObjects.size(); i++) {
+            GameObject x = GameObjects.get(i);
+            if (x instanceof Pea) {
+                for (int i1 = 0; i1 < GameObjects.size(); i1++) {
+                    GameObject y = GameObjects.get(i1);
+                    if (y instanceof Zombie) {
+                        if (x.rect.overlaps(y.rect)) {
+                            System.out.println("OVERLAPS");
+                        }
+                    }
+                }
+            }
         }
         game.batch.end();
     }
