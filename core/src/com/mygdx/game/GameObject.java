@@ -2,18 +2,24 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
+
+import java.awt.*;
 
 public abstract class GameObject {
-	protected float MoveSpeed;
+	private final float MoveSpeed;
 	float X, Y;
+	private Rectangle rect;
 	private boolean CanRemove;
 	private float TargetX, TargetY, animationElapsedTime;
 	private Animation<TextureRegion> currentAnimation;
 
-	public GameObject(float x, float y) {
+	public GameObject(float moveSpeed, float x, float y) {
+		MoveSpeed = moveSpeed;
 		X = TargetX = x;
 		Y = TargetY = y;
 		CanRemove = false;
+		//rect.setPosition(x,y);
 		Load();
 	}
 
