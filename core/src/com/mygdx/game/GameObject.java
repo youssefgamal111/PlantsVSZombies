@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public abstract class GameObject {
 	private final float MoveSpeed;
 	public float X, Y;
-	private Rectangle rect;
+	public Rectangle rect;
 	private boolean CanRemove;
 	private float TargetX, TargetY, animationElapsedTime;
 	private Animation<TextureRegion> currentAnimation;
@@ -23,7 +23,8 @@ public abstract class GameObject {
 		X = TargetX = x;
 		Y = TargetY = y;
 		CanRemove = false;
-		//rect.setPosition(x,y);
+		rect = new Rectangle();
+		rect.setPosition(X, Y);
 		Load();
 	}
 
@@ -39,10 +40,21 @@ public abstract class GameObject {
 	public void SetCurrentAnimation(Animation<TextureRegion> animation) {
 		currentAnimation = animation;
 		animationElapsedTime = 0f;
+		rect.setWidth(getWidth());
+		rect.setHeight(getHeight());
+
 	}
 
 	public TextureRegion GetCurrentFrame() {
 		return currentAnimation.getKeyFrame(animationElapsedTime);
+	}
+
+	public int getHeight() {
+		return GetCurrentFrame().getRegionHeight();
+	}
+
+	public int getWidth() {
+		return GetCurrentFrame().getRegionWidth();
 	}
 
 	public void Remove() {
@@ -76,6 +88,7 @@ public abstract class GameObject {
 			Y = Math.max(Y - MoveSpeed * deltatime, TargetY);
 		if (Y < TargetY)
 			Y = Math.min(Y + MoveSpeed * deltatime, TargetY);
+		rect.setPosition(X, Y);
 		if (X == TargetX && Y == TargetY) {
 			OnMoveFinished();
 		}
