@@ -3,6 +3,7 @@ package com.mygdx.game.Plants;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.mygdx.game.GifDecoder;
+import com.mygdx.game.MainGameScreen;
 import com.mygdx.game.MyGdxGame;
 
 public class PeaShooter extends Plant {
@@ -19,6 +20,6 @@ public class PeaShooter extends Plant {
     }
 
     public void Shot() {
-        MyGdxGame.AddGameObject(new Pea(X + 35, Y + 37));
+        MainGameScreen.AddGameObject(new Pea(X + 35, Y + 37));
     }
 }
