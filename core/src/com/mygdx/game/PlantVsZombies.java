@@ -22,7 +22,7 @@ public class PlantVsZombies extends Game {
 
 
 
-        this.setScreen(new MainGameScreen(this));
+        this.setScreen(new MainMenuScreen(this));
     }
 
     @Override

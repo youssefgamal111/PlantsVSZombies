@@ -9,7 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MainMenuScreen implements Screen {
     PlantVsZombies game;
-    private Texture BackGroundImg = new Texture(Gdx.files.internal("SelectorScreen_BG_Right.jpg"));
+    private Texture BackGroundImg1 = new Texture(Gdx.files.internal("Screenshot (234).png"));
+    private Texture BackGroundImg2 = new Texture(Gdx.files.internal("Screenshot (235).png"));
     public MainMenuScreen(PlantVsZombies game)
     {
         this.game=game;
@@ -25,7 +26,19 @@ public class MainMenuScreen implements Screen {
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
-        game.batch.draw(BackGroundImg,10,10);
+        if(Gdx.input.getX() > 500 && Gdx.input.getX() < 1000 && Gdx.input.getY() > 50 && Gdx.input.getY() < 200) {
+            game.batch.draw(BackGroundImg2, 0, 0, 1080, 640);
+            if (Gdx.input.isTouched())
+            {
+                this.dispose();
+                game.setScreen(new MainGameScreen(game));
+            }
+        }
+        else {
+            game.batch.draw(BackGroundImg1, 0, 0, 1080, 640);
+        }
+
+
         game.batch.end();
 
     }
