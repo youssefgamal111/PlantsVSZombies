@@ -1,29 +1,31 @@
 package com.mygdx.game.Plants;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.GameObject;
 
-public class Plant extends GameObject {
-    public Plant(float moveSpeed, float x, float y) {
-        super(moveSpeed, x, y);
+public abstract class Plant extends GameObject {
+    protected Animation<TextureRegion> Attacking, Dying, Default;
+
+    public Plant(float x, float y) {
+        super(0, x, y);
     }
 
     @Override
-    public void Load() {
+    protected abstract void Load();
 
+    @Override
+    protected void OnRemove() {
+        SetCurrentAnimation(Dying);
     }
 
     @Override
-    public void OnRemove() {
-
+    protected void OnMoveStart() {
+        //nothing
     }
 
     @Override
-    public void OnMoveStart() {
-
-    }
-
-    @Override
-    public void OnMoveFinished() {
-
+    protected void OnMoveFinished() {
+        //nothing
     }
 }

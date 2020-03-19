@@ -10,11 +10,11 @@ public class NormalZombie extends Zombie {
     }
 
     @Override
-    public void Load() {
-        Default = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("Zombie\\1.gif").read());
-        Walking = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("Zombie\\Zombie.gif").read());
-        Dying = GifDecoder.loadGIFAnimation(Animation.PlayMode.NORMAL, Gdx.files.internal("Zombie\\ZombieDie.gif").read());
-        Attacking = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("Zombie\\ZombieAttack.gif").read());
+    protected void Load() {
+        Default = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("NormalZombie\\1.gif").read());
+        Walking = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("NormalZombie\\Zombie.gif").read());
+        Dying = GifDecoder.loadGIFAnimation(Animation.PlayMode.NORMAL, Gdx.files.internal("NormalZombie\\ZombieDie.gif").read());
+        Attacking = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("NormalZombie\\ZombieAttack.gif").read());
         SetCurrentAnimation(Default);
     }
 }

@@ -8,7 +8,7 @@ import java.awt.*;
 
 public abstract class GameObject {
 	private final float MoveSpeed;
-	float X, Y;
+	public float X, Y;
 	private Rectangle rect;
 	private boolean CanRemove;
 	private float TargetX, TargetY, animationElapsedTime;
@@ -23,13 +23,13 @@ public abstract class GameObject {
 		Load();
 	}
 
-	public abstract void Load();
+	protected abstract void Load();
 
-	public abstract void OnRemove();
+	protected abstract void OnRemove();
 
-	public abstract void OnMoveStart();
+	protected abstract void OnMoveStart();
 
-	public abstract void OnMoveFinished();
+	protected abstract void OnMoveFinished();
 
 
 	public void SetCurrentAnimation(Animation<TextureRegion> animation) {
@@ -50,8 +50,9 @@ public abstract class GameObject {
 		return currentAnimation.isAnimationFinished(animationElapsedTime) && CanRemove;
 	}
 
-	public void Move(int x, int y) {
-
+	public void Move(float x, float y) {
+		if (MoveSpeed == 0)
+			return;
 		if (X == x && Y == y)
 			return;
 		TargetX = x;

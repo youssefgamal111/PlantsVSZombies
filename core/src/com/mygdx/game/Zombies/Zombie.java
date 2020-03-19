@@ -13,27 +13,27 @@ public abstract class Zombie extends GameObject {
 
 
 	@Override
-	public abstract void Load();
+    protected abstract void Load();
 
 	public void Kill() {
 		super.Remove();
 	}
 
-	@Override
-	public void OnRemove() {
-		SetCurrentAnimation(Dying);
-	}
+    @Override
+    protected void OnRemove() {
+        SetCurrentAnimation(Dying);
+    }
 
-	@Override
-	public void OnMoveFinished() {
-		SetCurrentAnimation(Default);
+    @Override
+    protected void OnMoveFinished() {
+        SetCurrentAnimation(Default);
 
-	}
+    }
 
-	@Override
-	public void OnMoveStart() {
-		SetCurrentAnimation(Walking);
+    @Override
+    protected void OnMoveStart() {
+        SetCurrentAnimation(Walking);
 
-	}
+    }
 
 }
