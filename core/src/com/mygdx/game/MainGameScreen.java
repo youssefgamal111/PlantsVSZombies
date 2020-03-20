@@ -4,7 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.Plants.Pea;
 import com.mygdx.game.Plants.PeaShooter;
 import com.mygdx.game.Plants.Plant;
@@ -19,20 +20,22 @@ public class MainGameScreen implements Screen {
     private static ArrayList<GameObject> GameObjects;
     private static ArrayList<GameObject> GameObjectsToAdd = new ArrayList<>();
     private float time;
+    private TextureRegion backgroundTexture;
 
     public static void AddGameObject(GameObject go) {
         GameObjectsToAdd.add(go);
     }
-    public MainGameScreen(PlantVsZombies game)
-    {
+
+    public MainGameScreen(PlantVsZombies game) {
         this.game = game;
+        backgroundTexture = new TextureRegion(new Texture("background1unsodded1.jpg"), 0, 0, PlantVsZombies.WIDTH, PlantVsZombies.HEIGHT);
         GameObjects = new ArrayList<>();
         Zombie z = new NormalZombie(200, 200);
         Zombie y = new NormalZombie(500, 200);
         Plant p = new PeaShooter(10, 10);
         GameObjects.add(z);
-        GameObjects.add(y);
-        GameObjects.add(p);
+        // GameObjects.add(y);
+        // GameObjects.add(p);
     }
     @Override
     public void show() {
@@ -45,7 +48,9 @@ public class MainGameScreen implements Screen {
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
-        //looping through all objects in the game
+        game.batch.draw(backgroundTexture, 0, 0);
+        //I believe texture region takes the upper left corner as 0,0 and batch.Draw the bottom left.
+        //So you might need to do something like this:
         for (Iterator<GameObject> iterator = GameObjects.iterator(); iterator.hasNext(); ) {
             GameObject gameObject = iterator.next();
 
@@ -60,7 +65,7 @@ public class MainGameScreen implements Screen {
         if (Gdx.input.isTouched()) {
             for (GameObject z : GameObjects) {
                 if (z instanceof Zombie)
-                z.Move(Gdx.input.getX(), PlantVsZombies.WIDTH - Gdx.input.getY());
+                    z.Move(game.getInputInGameWorld().x, game.getInputInGameWorld().y);
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
@@ -83,8 +88,7 @@ public class MainGameScreen implements Screen {
         for (int i = 0; i < GameObjects.size(); i++) {
             GameObject x = GameObjects.get(i);
             if (x instanceof Pea) {
-                for (int i1 = 0; i1 < GameObjects.size(); i1++) {
-                    GameObject y = GameObjects.get(i1);
+                for (GameObject y : GameObjects) {
                     if (y instanceof Zombie) {
                         if (x.rect.overlaps(y.rect)) {
                             System.out.println("OVERLAPS");
@@ -98,7 +102,6 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
     }
 
     @Override

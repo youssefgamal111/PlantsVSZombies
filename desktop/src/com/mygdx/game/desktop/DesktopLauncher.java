@@ -9,10 +9,10 @@ import com.mygdx.game.PlantVsZombies;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.height = 640;
-		config.width=1080;
-                 config.title="Plants Vs Zombies";
-                 config.addIcon("plantsvszombies.png", Files.FileType.Internal);
+		config.height = PlantVsZombies.HEIGHT;
+		config.width = PlantVsZombies.WIDTH;
+		config.title = "Plants Vs Zombies";
+		config.addIcon("plantsvszombies.png", Files.FileType.Internal);
 		new LwjglApplication(new PlantVsZombies(), config);
 	}
 }
