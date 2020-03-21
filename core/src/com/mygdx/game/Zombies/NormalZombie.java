@@ -6,7 +6,7 @@ import com.mygdx.game.GifDecoder;
 
 public class NormalZombie extends Zombie {
     public NormalZombie(float x, float y) {
-        super(50, x, y);
+        super(100,40, x, y);
     }
 
     @Override
