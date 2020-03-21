@@ -7,8 +7,8 @@ import com.mygdx.game.GameObject;
 public abstract class Zombie extends GameObject {
 	protected Animation<TextureRegion> Walking, Attacking, Dying, Default;
 
-	public Zombie(float moveSpeed, float x, float y) {
-		super(moveSpeed, x, y);
+	public Zombie(int health,float moveSpeed, float x, float y) {
+		super(health,moveSpeed, x, y);
 	}
 
 

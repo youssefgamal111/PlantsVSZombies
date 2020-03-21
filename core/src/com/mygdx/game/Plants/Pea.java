@@ -9,7 +9,7 @@ import com.mygdx.game.PlantVsZombies;
 
 public class Pea extends GameObject {
     public Pea(float x, float y) {
-        super(100, x, y);
+        super(100,100, x, y);
     }
 
     protected Animation<TextureRegion> Default, Hit;
@@ -25,6 +25,7 @@ public class Pea extends GameObject {
     @Override
     protected void OnRemove() {
         SetCurrentAnimation(Hit);
+        
     }
 
     @Override

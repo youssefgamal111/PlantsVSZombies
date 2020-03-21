@@ -8,15 +8,17 @@ import com.badlogic.gdx.math.Rectangle;
 public abstract class GameObject {
 	private final float MoveSpeed;
 	public float X, Y;
+         public int health;
 	public Rectangle rect;
 	private boolean CanRemove;
 	private float TargetX, TargetY, animationElapsedTime;
 	private Animation<TextureRegion> currentAnimation;
 
-	public GameObject(float moveSpeed, float x, float y) {
+	public GameObject(int Heal,float moveSpeed, float x, float y) {
 		MoveSpeed = moveSpeed;
 		X = TargetX = x;
 		Y = TargetY = y;
+                 health=Heal;
 		CanRemove = false;
 		rect = new Rectangle();
 		rect.setPosition(X, Y);

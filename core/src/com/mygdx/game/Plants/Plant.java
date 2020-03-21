@@ -8,7 +8,7 @@ public abstract class Plant extends GameObject {
     protected Animation<TextureRegion> Attacking, Dying, Default;
 
     public Plant(float x, float y) {
-        super(0, x, y);
+        super(100,0, x, y);
     }
 
     @Override
