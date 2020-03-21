@@ -5,28 +5,34 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.Plants.Pea;
 import com.mygdx.game.Plants.PeaShooter;
 import com.mygdx.game.Plants.Plant;
 import com.mygdx.game.Zombies.NormalZombie;
 import com.mygdx.game.Zombies.Zombie;
+import java.awt.Label;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MainGameScreen implements Screen {
+    BitmapFont scorefont;
     private PlantVsZombies game;
     private static ArrayList<GameObject> GameObjects;
     private static ArrayList<GameObject> GameObjectsToAdd = new ArrayList<>();
     private float time;
     private TextureRegion backgroundTexture;
-
+int score;
     public static void AddGameObject(GameObject go) {
         GameObjectsToAdd.add(go);
     }
 
     public MainGameScreen(PlantVsZombies game) {
+       scorefont=new BitmapFont(Gdx.files.internal("font.fnt"));
+       score=0;
         this.game = game;
         backgroundTexture = new TextureRegion(new Texture("background1unsodded1.jpg"), 0, 0, PlantVsZombies.WIDTH, PlantVsZombies.HEIGHT);
         GameObjects = new ArrayList<>();
@@ -51,6 +57,8 @@ public class MainGameScreen implements Screen {
         game.batch.draw(backgroundTexture, 0, 0);
         //I believe texture region takes the upper left corner as 0,0 and batch.Draw the bottom left.
         //So you might need to do something like this:
+        GlyphLayout scorelayout=new GlyphLayout(scorefont,"score  "+score+" ");
+        scorefont.draw(game.batch, scorelayout,Gdx.graphics.getWidth()-scorelayout.width ,Gdx.graphics.getHeight()-scorelayout.height-8);
         for (Iterator<GameObject> iterator = GameObjects.iterator(); iterator.hasNext(); ) {
             GameObject gameObject = iterator.next();
 
@@ -123,4 +131,5 @@ public class MainGameScreen implements Screen {
     public void dispose() {
         game.batch.dispose();
     }
+   
 }
