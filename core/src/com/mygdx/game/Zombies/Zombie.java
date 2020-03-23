@@ -6,13 +6,21 @@ import com.mygdx.game.GameObject;
 
 public abstract class Zombie extends GameObject {
 	protected Animation<TextureRegion> Walking, Attacking, Dying, Default;
-
-	public Zombie(float moveSpeed, float x, float y) {
+private int health;
+	public Zombie(float moveSpeed, float x, float y,int health) {
 		super(moveSpeed, x, y);
+		this. health=health;
 	}
 
+    public int getHealth() {
+        return health;
+    }
 
-	@Override
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    @Override
     protected abstract void Load();
 
 	public void Kill() {

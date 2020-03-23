@@ -86,8 +86,8 @@ public class MainGameScreen implements Screen {
                 for (int i1 = 0; i1 < GameObjects.size(); i1++) {
                     GameObject y = GameObjects.get(i1);
                     if (y instanceof Zombie) {
-                        if (x.rect.overlaps(y.rect)) {
-                            System.out.println("OVERLAPS");
+                        if (x.rect.overlaps(y.rect)&&!x.CanRemove()) {
+                            ((Pea) x).shoot((Zombie)y);
                         }
                     }
                 }

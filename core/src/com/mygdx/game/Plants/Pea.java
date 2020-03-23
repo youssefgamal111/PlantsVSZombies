@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.GameObject;
 import com.mygdx.game.GifDecoder;
 import com.mygdx.game.PlantVsZombies;
+import com.mygdx.game.Zombies.Zombie;
 
 public class Pea extends GameObject {
     public Pea(float x, float y) {
@@ -26,7 +27,22 @@ public class Pea extends GameObject {
     protected void OnRemove() {
         SetCurrentAnimation(Hit);
     }
+   public void shoot(Zombie z)
+{
+      if(z.getHealth()==0 )
+      {
+         Remove();
+          z.Kill();
+          z.Remove();
 
+      }
+      else
+          {
+
+              Remove();
+            z.setHealth( z.getHealth()-1) ;
+          }
+}
     @Override
     protected void OnMoveStart() {
 
