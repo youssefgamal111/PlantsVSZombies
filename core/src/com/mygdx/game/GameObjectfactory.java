@@ -1,3 +1,5 @@
+package com.mygdx.game;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.game.GameObject;
@@ -10,7 +12,7 @@ import com.mygdx.game.Zombies.Zombie;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class GameObjectFactory {
+public class GameObjectfactory {
     private static ArrayList<GameObject> GameObjects;
     private static ArrayList<GameObject> GameObjectsToAdd;
     private static PlantVsZombies game;
@@ -35,7 +37,7 @@ public class GameObjectFactory {
     }
     public static void AddPlant(int row)
     {
-       PeaShooter p= new PeaShooter(5,5);
+        PeaShooter p= new PeaShooter(5,5);
         GameObjects.add(row,p);
 
     }
