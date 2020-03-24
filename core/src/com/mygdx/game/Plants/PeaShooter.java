@@ -2,6 +2,7 @@ package com.mygdx.game.Plants;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.mygdx.game.GameObjectFactory;
 import com.mygdx.game.GifDecoder;
 import com.mygdx.game.MainGameScreen;
 
@@ -25,8 +26,8 @@ public class PeaShooter extends Plant {
     public Pea Shot() {
 //        MainGameScreen.AddGameObject(new Pea(X + 35, Y + 37));
         Pea pp=new Pea(X + 35, Y + 37);
-        MainGameScreen.AddGameObject(pp);
-        shoot=true;
+        GameObjectFactory.AddGameObject(pp);
+        shoot = true;
         return pp;
     }
 }

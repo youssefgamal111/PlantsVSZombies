@@ -9,6 +9,7 @@ import com.mygdx.game.PlantVsZombies;
 import com.mygdx.game.Zombies.Zombie;
 
 public class Pea extends GameObject {
+    private int Row;
     public Pea(float x, float y) {
         super(100, x, y);
     }
@@ -49,6 +50,7 @@ public class Pea extends GameObject {
             z.setHealth( z.getHealth()-1) ;
           }
 }
+
     @Override
     protected void OnMoveStart() {
 
@@ -58,5 +60,9 @@ public class Pea extends GameObject {
     public void OnMoveFinished() {
         super.Remove();
 //        PeaShooter
+    }
+
+    public int getRow() {
+        return Row;
     }
 }
