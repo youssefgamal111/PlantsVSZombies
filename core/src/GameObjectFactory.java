@@ -14,35 +14,34 @@ public class GameObjectFactory {
     private static ArrayList<GameObject> GameObjects;
     private static ArrayList<GameObject> GameObjectsToAdd;
     private static PlantVsZombies game;
-    public static void instialization(PlantVsZombies Game)
-    {
-        game=Game;
+
+    public static void instialization(PlantVsZombies Game) {
+        game = Game;
         GameObjects = new ArrayList<>();
         GameObjectsToAdd = new ArrayList<>();
     }
-    public static  void render()
-    {
-        for(Iterator<GameObject> iterator = GameObjects.iterator(); iterator.hasNext();)
-        {
-            GameObject gameObject=iterator.next();
-            game.batch.draw(gameObject.GetCurrentFrame(),gameObject.X,gameObject.Y);
+
+    public static void render() {
+        for (Iterator<GameObject> iterator = GameObjects.iterator(); iterator.hasNext(); ) {
+            GameObject gameObject = iterator.next();
+            game.batch.draw(gameObject.GetCurrentFrame(), gameObject.X, gameObject.Y);
             gameObject.Render(Gdx.graphics.getDeltaTime());
-            if(gameObject.CanRemove())
+            if (gameObject.CanRemove())
                 iterator.remove();
         }
         GameObjects.addAll(GameObjectsToAdd);
         GameObjectsToAdd.clear();
     }
-    public static void AddPlant(int row)
-    {
-       PeaShooter p= new PeaShooter(5,5);
-        GameObjects.add(row,p);
+
+    public static void AddPlant(int row) {
+        PeaShooter p = new PeaShooter(5, 5);
+        GameObjects.add(row, p);
 
     }
-    public static void AddZombie(int row)
-    {
-        NormalZombie Z=new NormalZombie(0,0) ;
-        GameObjects.add(row,Z);
+
+    public static void AddZombie(int row) {
+        NormalZombie Z = new NormalZombie(0, 0);
+        GameObjects.add(row, Z);
 
     }
 

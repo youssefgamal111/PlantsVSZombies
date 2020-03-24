@@ -1,5 +1,3 @@
-package com.mygdx.game;
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.game.GameObject;
@@ -15,18 +13,18 @@ import java.util.Iterator;
 public class GameObjectFactory {
     private static ArrayList<GameObject> GameObjects;
     private static ArrayList<GameObject> GameObjectsToAdd;
-    private static PlantVsZombies Game;
+    private static PlantVsZombies game;
 
-    public static void initialize(PlantVsZombies game) {
-        Game = game;
+    public static void instialization(PlantVsZombies Game) {
+        game = Game;
         GameObjects = new ArrayList<>();
         GameObjectsToAdd = new ArrayList<>();
     }
 
-    public static void Render() {
+    public static void render() {
         for (Iterator<GameObject> iterator = GameObjects.iterator(); iterator.hasNext(); ) {
             GameObject gameObject = iterator.next();
-            Game.batch.draw(gameObject.GetCurrentFrame(), gameObject.X, gameObject.Y);
+            game.batch.draw(gameObject.GetCurrentFrame(), gameObject.X, gameObject.Y);
             gameObject.Render(Gdx.graphics.getDeltaTime());
             if (gameObject.CanRemove())
                 iterator.remove();
@@ -35,17 +33,16 @@ public class GameObjectFactory {
         GameObjectsToAdd.clear();
     }
 
-    public static void AddGameObject(GameObject p) {
-        GameObjectsToAdd.add(p);
-    }
-
     public static void AddPlant(int row) {
         PeaShooter p = new PeaShooter(5, 5);
-        GameObjectsToAdd.add(p);
+        GameObjects.add(row, p);
+
     }
 
     public static void AddZombie(int row) {
         NormalZombie Z = new NormalZombie(0, 0);
-        GameObjectsToAdd.add(Z);
+        GameObjects.add(row, Z);
+
     }
+
 }
