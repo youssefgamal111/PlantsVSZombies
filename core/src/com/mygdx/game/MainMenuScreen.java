@@ -9,10 +9,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MainMenuScreen implements Screen {
     PlantVsZombies game;
-    private Texture BackGroundImg = new Texture(Gdx.files.internal("SelectorScreen_BG_Right.jpg"));
-    public MainMenuScreen(PlantVsZombies game)
-    {
-        this.game=game;
+    private Texture BackGroundImg1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (234).png"));
+    private Texture BackGroundImg2 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (235).png"));
+    private Texture Exit1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (245).png"));
+
+    public MainMenuScreen(PlantVsZombies game) {
+        this.game = game;
     }
 
     @Override
@@ -22,10 +24,36 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
-        game.batch.draw(BackGroundImg,10,10);
+        if (Gdx.input.isTouched()) {
+            System.out.println(game.getInputInGameWorld().x);
+            System.out.println(game.getInputInGameWorld().y);
+        }
+
+        if (game.getInputInGameWorld().x > 500 && game.getInputInGameWorld().x < 1000 &&
+                game.getInputInGameWorld().y < 640 - 50 && game.getInputInGameWorld().y > 640 - 200) {
+            game.batch.draw(BackGroundImg2, 0, 0, 1080, 640);
+            if (Gdx.input.isTouched()) {
+                this.dispose();
+                game.setScreen(new MainGameScreen(game));
+            }
+        } else {
+            game.batch.draw(BackGroundImg1, 0, 0, 1080, 640);
+            if (game.getInputInGameWorld().x > 943 && game.getInputInGameWorld().x < 1050 &&
+                    game.getInputInGameWorld().y < 640 - 470 && game.getInputInGameWorld().y > 640 - 590) {
+                game.batch.draw(Exit1, 0, 0, 1080, 640);
+                if (Gdx.input.isTouched()) {
+                    this.dispose();
+                    game.setScreen(new ExitScreen(game));
+                }
+            } else {
+                game.batch.draw(BackGroundImg1, 0, 0, 1080, 640);
+            }
+        }
+
+
         game.batch.end();
 
     }
