@@ -35,7 +35,7 @@ public abstract class GameObject {
 	protected abstract void OnMoveStart();
 
 	protected abstract void OnMoveFinished();
-
+	
 
 	public void SetCurrentAnimation(Animation<TextureRegion> animation) {
 		currentAnimation = animation;

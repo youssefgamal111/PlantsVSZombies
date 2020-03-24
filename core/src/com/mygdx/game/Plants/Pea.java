@@ -14,7 +14,13 @@ public class Pea extends GameObject {
     }
 
     protected Animation<TextureRegion> Default, Hit;
-
+    public boolean metZombie(GameObject z)
+    {
+       if(z.rect.contains(rect))
+           return true;
+       
+       return false;
+    }
     @Override
     protected void Load() {
         Default = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("PB00.gif").read());
@@ -24,7 +30,7 @@ public class Pea extends GameObject {
     }
 
     @Override
-    protected void OnRemove() {
+    public void OnRemove() {
         SetCurrentAnimation(Hit);
     }
    public void shoot(Zombie z)
@@ -49,7 +55,8 @@ public class Pea extends GameObject {
     }
 
     @Override
-    protected void OnMoveFinished() {
+    public void OnMoveFinished() {
         super.Remove();
+//        PeaShooter
     }
 }
