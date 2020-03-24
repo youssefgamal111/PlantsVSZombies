@@ -14,7 +14,7 @@ public class GameObjectFactory {
     private static ArrayList<GameObject> GameObjects;
     private static ArrayList<GameObject> GameObjectsToAdd;
     private static PlantVsZombies game;
-    public static void instialization(PlantVsZombies Game)
+    public static void Instialization(PlantVsZombies Game)
     {
         game=Game;
         GameObjects = new ArrayList<>();
