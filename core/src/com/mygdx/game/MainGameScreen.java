@@ -19,46 +19,33 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MainGameScreen implements Screen {
-    BitmapFont scorefont;
+    //BitmapFont scorefont;
     private PlantVsZombies game;
     private static ArrayList<GameObject> GameObjects;
     private static ArrayList<GameObject> GameObjectsToAdd = new ArrayList<>();
     private float time;
+    GameMap Map1=new GameMap(5, 9);
     private TextureRegion backgroundTexture;
-int score;
+//int score;
     public static void AddGameObject(GameObject go) {
         GameObjectsToAdd.add(go);
     }
 
     public MainGameScreen(PlantVsZombies game) {
-       scorefont=new BitmapFont(Gdx.files.internal("font.fnt"));
-       score=0;
+       //scorefont=new BitmapFont(Gdx.files.internal("font.fnt"));
+       //score=0;
         this.game = game;
-        backgroundTexture = new TextureRegion(new Texture("background1unsodded1.jpg"), 0, 0, PlantVsZombies.WIDTH, PlantVsZombies.HEIGHT);
+        backgroundTexture = new TextureRegion(new Texture("background1.jpg"), 0, 0, PlantVsZombies.WIDTH, PlantVsZombies.HEIGHT);
         GameObjects = new ArrayList<>();
         Zombie z = new NormalZombie(1020, 220);
         Zombie y = new NormalZombie(500, 200);
         Plant p = new PeaShooter(10, 10);
-        Plant a = new PeaShooter(10, 10);
-        Plant b = new PeaShooter(10, 10);
-        Plant c = new PeaShooter(10, 10);
-        Plant d = new PeaShooter(10, 10);
         
         GameObjects.add(z);
-        GameObjects.add(a);
-        GameObjects.add(b);
-        GameObjects.add(c);
-        GameObjects.add(d);
         z.Move(0,220);
-        // GameObjects.add(y);
-         GameObjects.add(p);
-         p.X=50;
-         a.X=80;
-         b.X=110;
-         c.X=140;
-         d.X=170;
-         p.Y=a.Y=b.Y=c.Y=0;
-                 d.Y=250;
+        GameObjects.add(p);
+         p.X=260;
+         p.Y=260;
          
                  
     }
@@ -76,8 +63,8 @@ int score;
         game.batch.draw(backgroundTexture, 0, 0);
         //I believe texture region takes the upper left corner as 0,0 and batch.Draw the bottom left.
         //So you might need to do something like this:
-        GlyphLayout scorelayout=new GlyphLayout(scorefont,"score  "+score+" ");
-        scorefont.draw(game.batch, scorelayout,Gdx.graphics.getWidth()-scorelayout.width ,Gdx.graphics.getHeight()-scorelayout.height-8);
+        //GlyphLayout scorelayout=new GlyphLayout(scorefont,"score  "+score+" ");
+        //scorefont.draw(game.batch, scorelayout,Gdx.graphics.getWidth()-scorelayout.width ,Gdx.graphics.getHeight()-scorelayout.height-8);
         for (Iterator<GameObject> iterator = GameObjects.iterator(); iterator.hasNext(); ) {
             GameObject gameObject = iterator.next();
 
@@ -89,62 +76,41 @@ int score;
         GameObjects.addAll(GameObjectsToAdd);
         GameObjectsToAdd.clear();
         //looping through all objects in the game
-        
-
-//        if (Gdx.input.isTouched()) {
-//            for (GameObject z : GameObjects) {
-//                if (z instanceof Zombie)
-//                    z.Move(game.getInputInGameWorld().x, game.getInputInGameWorld().y);                    z.Move(game.getInputInGameWorld().x, game.getInputInGameWorld().y);
-//                    z.Move(0, 220);
-//
-//            }
-//        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
-            for (GameObject z : GameObjects) {
-                if (z instanceof Zombie) {
-                    Zombie zz = (Zombie) z;
-                    zz.Kill();
-                }
-            }
-        }
-         
         if (time > 1f) {
             for (GameObject z : GameObjects) {
                 if (z instanceof PeaShooter) {
                     if(((PeaShooter) z).shoot==false){
                        PeaShooter zz = (PeaShooter) z;
                     ((PeaShooter) z).pea=zz.Shot();
-                    ((PeaShooter) z).shoot=true;
                     }
-                    
                 }
             }
             time = 0;
         }
-       
+        for (int i = 0; i < GameObjects.size(); i++) {
+            for (GameObject y : GameObjects){
+                if (y instanceof Zombie) {
+                    if(((Zombie) y).health<=0)
+                        ((Zombie) y).Kill();
+                }
+            }
+        }
         for (int i = 0; i < GameObjects.size(); i++) {
             GameObject x = GameObjects.get(i);
             if (x instanceof Pea) {
                 for (GameObject y : GameObjects) {
                     if (y instanceof Zombie) {
-                        if (x.rect.overlaps(y.rect)) {
-                            System.out.println("OVERLAPS");
-                            ((Zombie) y).health-=20;
-                        }
-                        if(((Zombie) y).health>=0)
-                        {
-                            ((Zombie) y).Kill();
-//                            y=new NormalZombie(1020, 220);
-//                            GameObjects.add(y);
-//                            y.Move(0,220);
-
+                        if(((Pea) x).metZombie(y))
+                        { 
+                        x.Remove();
                         }
                     }
                 }
             }
         }
         
+        if (Gdx.input.isTouched())
+            Map1.findPlot(game.getInputInGameWorld().x, game.getInputInGameWorld().y);
         game.batch.end();
     }
 

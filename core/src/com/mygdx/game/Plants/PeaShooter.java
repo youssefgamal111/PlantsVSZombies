@@ -26,6 +26,7 @@ public class PeaShooter extends Plant {
 //        MainGameScreen.AddGameObject(new Pea(X + 35, Y + 37));
         Pea pp=new Pea(X + 35, Y + 37);
         MainGameScreen.AddGameObject(pp);
+        shoot=true;
         return pp;
     }
 }

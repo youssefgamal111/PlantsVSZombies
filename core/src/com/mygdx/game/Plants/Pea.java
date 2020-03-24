@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.GameObject;
 import com.mygdx.game.GifDecoder;
 import com.mygdx.game.PlantVsZombies;
+import com.mygdx.game.Zombies.Zombie;
 
 public class Pea extends GameObject {
     public Pea(float x, float y) {
@@ -13,7 +14,13 @@ public class Pea extends GameObject {
     }
 
     protected Animation<TextureRegion> Default, Hit;
-
+    public boolean metZombie(GameObject z)
+    {
+       if(z.rect.contains(rect))
+           return true;
+       
+       return false;
+    }
     @Override
     protected void Load() {
         Default = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("PB00.gif").read());
@@ -23,7 +30,7 @@ public class Pea extends GameObject {
     }
 
     @Override
-    protected void OnRemove() {
+    public void OnRemove() {
         SetCurrentAnimation(Hit);
         
     }
@@ -34,7 +41,8 @@ public class Pea extends GameObject {
     }
 
     @Override
-    protected void OnMoveFinished() {
+    public void OnMoveFinished() {
         super.Remove();
+//        PeaShooter
     }
 }
