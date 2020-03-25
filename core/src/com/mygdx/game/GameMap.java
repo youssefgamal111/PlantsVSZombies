@@ -1,4 +1,7 @@
 package com.mygdx.game;
+
+import com.badlogic.gdx.math.Vector2;
+
 class Place {
     final int iX, iY, fX, fY, x, y;
 
@@ -17,8 +20,8 @@ public class GameMap {
 
     private final int NColumns = 9, Rows;
     private Place[][] map;
-    private final static int[][] RowCords = {{245, 335}, {335, 410}, {410, 495}, {495, 575}, {575, 655}, {655, 735}, {735, 810}, {810, 900}, {900, 990}};
-    private final static int[][] ColumnCords = {{30, 130}, {130, 220}, {220, 320}, {320, 420}, {420, 520}};
+    public final static int[][] ColumnCords = {{245, 335}, {335, 410}, {410, 495}, {495, 575}, {575, 655}, {655, 735}, {735, 810}, {810, 900}, {900, 990}};
+    public final static int[][] RowCords = {{30, 130}, {130, 220}, {220, 320}, {320, 420}, {420, 520}};
 
     public GameMap(int Rows) {
         this.Rows = 5;
@@ -29,10 +32,14 @@ public class GameMap {
         map = new Place[this.Rows][this.NColumns];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
-                //                    x   y     ix      iy              fx          fy
-                map[i][j] = new Place(i, j, RowCords[j][0], ColumnCords[i][0], RowCords[j][1], ColumnCords[i][1]);
+                //                    x  y       ix                iy                fx               fy
+                map[i][j] = new Place(j, i, ColumnCords[j][0], RowCords[i][0], ColumnCords[j][1], RowCords[i][1]);
             }
         }
+    }
+
+    public Place findPlot(Vector2 coords) {
+        return findPlot(coords.x, coords.y);
     }
 
     public Place findPlot(float x, float y) {
@@ -48,7 +55,7 @@ public class GameMap {
 
     public int findRow(float x, float y) {
         Place result = findPlot(x, y);
-        return result == null ? result.x : -1;
+        return result == null ? result.y : -1;
     }
 
 }

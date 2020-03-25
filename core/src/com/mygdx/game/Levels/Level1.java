@@ -1,7 +1,12 @@
-package com.mygdx.game;
+package com.mygdx.game.Levels;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.game.Cards.puffshroom;
+import com.mygdx.game.GameMap;
+import com.mygdx.game.GameObjectFactory;
+import com.mygdx.game.ImageFactory;
+import com.mygdx.game.PlantVsZombies;
+import com.mygdx.game.Zombies.NormalZombie;
 
 public class Level1 extends World {
     public Level1(PlantVsZombies game) {
@@ -12,7 +17,7 @@ public class Level1 extends World {
     }
 
     private void LoadObjects() {
-        GameObjectFactory.AddZombie(0);
+        GameObjectFactory.AddZombie(new NormalZombie(0, 0), 1);
         ImageFactory.AddCard(new puffshroom());
     }
 }

@@ -8,61 +8,18 @@ import com.mygdx.game.GifDecoder;
 import com.mygdx.game.PlantVsZombies;
 import com.mygdx.game.Zombies.Zombie;
 
-public class Pea extends GameObject {
-    private int Row;
+public class Pea extends Bullet {
     public Pea(float x, float y) {
-        super(100, x, y);
+        super(100, x, y, 1);
     }
 
-    protected Animation<TextureRegion> Default, Hit;
-    public boolean metZombie(GameObject z)
-    {
-       if(z.rect.contains(rect))
-           return true;
-       
-       return false;
-    }
     @Override
     protected void Load() {
         Default = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("PB00.gif").read());
         Hit = GifDecoder.loadGIFAnimation(Animation.PlayMode.NORMAL, Gdx.files.internal("PeaBulletHit.gif").read());
         SetCurrentAnimation(Default);
-        Move(PlantVsZombies.WIDTH - 100, Y);
+        Move(PlantVsZombies.WIDTH - 100, getY());
     }
 
-    @Override
-    public void OnRemove() {
-        SetCurrentAnimation(Hit);
-    }
-   public void shoot(Zombie z)
-{
-      if(z.getHealth()==0 )
-      {
-         Remove();
-          z.Kill();
-          z.Remove();
 
-      }
-      else
-          {
-
-              Remove();
-            z.setHealth( z.getHealth()-1) ;
-          }
-}
-
-    @Override
-    protected void OnMoveStart() {
-
-    }
-
-    @Override
-    public void OnMoveFinished() {
-        super.Remove();
-//        PeaShooter
-    }
-
-    public int getRow() {
-        return Row;
-    }
 }

@@ -1,23 +1,8 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.mygdx.game.Plants.Pea;
-import com.mygdx.game.Plants.PeaShooter;
-import com.mygdx.game.Plants.Plant;
-import com.mygdx.game.Zombies.NormalZombie;
-import com.mygdx.game.Zombies.Zombie;
-
-import java.awt.Label;
-
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.mygdx.game.Levels.Level1;
+import com.mygdx.game.Levels.World;
 
 public class MainGameScreen implements Screen {
     private PlantVsZombies game;

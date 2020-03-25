@@ -7,12 +7,9 @@ import com.mygdx.game.GifDecoder;
 import com.mygdx.game.MainGameScreen;
 
 public class PeaShooter extends Plant {
-    public boolean shoot;
-    public Pea pea;
     public PeaShooter(float x, float y) {
         super(x, y);
-        shoot=false;
-        
+
     }
 
     @Override
@@ -23,11 +20,9 @@ public class PeaShooter extends Plant {
         SetCurrentAnimation(Default);
     }
 
-    public Pea Shot() {
-//        MainGameScreen.AddGameObject(new Pea(X + 35, Y + 37));
-        Pea pp=new Pea(X + 35, Y + 37);
+    public void Shot() {
+        Pea pp = new Pea(getX() + 35, getY() + 37);
+        pp.Row = Row;
         GameObjectFactory.AddGameObject(pp);
-        shoot = true;
-        return pp;
     }
 }
