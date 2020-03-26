@@ -34,6 +34,10 @@ public class GameObjectFactory {
 
     }
 
+    public static ArrayList<GameObject> getGameObjects() {
+        return GameObjects;
+    }
+
     public static void Render() {
         for (Iterator<GameObject> iterator = GameObjects.iterator(); iterator.hasNext(); ) {
             GameObject gameObject = iterator.next();

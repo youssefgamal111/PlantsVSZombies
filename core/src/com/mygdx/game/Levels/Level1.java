@@ -17,7 +17,7 @@ public class Level1 extends World {
     }
 
     private void LoadObjects() {
-        GameObjectFactory.AddZombie(new NormalZombie(0, 0), 1);
+        GameObjectFactory.AddZombie(new NormalZombie(0, 0), 2);
         ImageFactory.AddCard(new puffshroom());
     }
 }

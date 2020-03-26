@@ -4,11 +4,12 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
-
+import javax.lang.model.util.Types;
 
 
 public abstract class GameObject {
 	private final float MoveSpeed;
+	protected Types rect;
 	private float X;
 	private float Y;
 	public int Row;
