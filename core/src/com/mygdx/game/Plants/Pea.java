@@ -40,11 +40,9 @@ public class Pea extends GameObject {
          Remove();
           z.Kill();
           z.Remove();
-
       }
       else
           {
-
               Remove();
             z.setHealth( z.getHealth()-1) ;
           }
