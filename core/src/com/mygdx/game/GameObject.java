@@ -1,19 +1,17 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
-import java.awt.*;
 
-import java.util.ArrayList;
 
 
 public abstract class GameObject {
 	private final float MoveSpeed;
-	public float X, Y;
-	public Rectangle rect;
+	private float X;
+	private float Y;
+	public int Row;
 	private boolean CanRemove;
 	private float TargetX, TargetY, animationElapsedTime;
 	private Animation<TextureRegion> currentAnimation;
@@ -23,8 +21,6 @@ public abstract class GameObject {
 		X = TargetX = x;
 		Y = TargetY = y;
 		CanRemove = false;
-		rect = new Rectangle();
-		rect.setPosition(X, Y);
 		Load();
 	}
 
@@ -40,9 +36,6 @@ public abstract class GameObject {
 	public void SetCurrentAnimation(Animation<TextureRegion> animation) {
 		currentAnimation = animation;
 		animationElapsedTime = 0f;
-		rect.setWidth(getWidth());
-		rect.setHeight(getHeight());
-
 	}
 
 	public TextureRegion GetCurrentFrame() {
@@ -58,6 +51,8 @@ public abstract class GameObject {
 	}
 
 	public void Remove() {
+		if (this.CanRemove)
+			return;
 		this.CanRemove = true;
 		OnRemove();
 	}
@@ -88,9 +83,33 @@ public abstract class GameObject {
 			Y = Math.max(Y - MoveSpeed * deltatime, TargetY);
 		if (Y < TargetY)
 			Y = Math.min(Y + MoveSpeed * deltatime, TargetY);
-		rect.setPosition(X, Y);
 		if (X == TargetX && Y == TargetY) {
 			OnMoveFinished();
 		}
+	}
+
+	public void Stop() {
+		TargetX = X;
+		TargetY = Y;
+	}
+
+	public float getX() {
+		return X;
+	}
+
+	public void setX(float x) {
+		X = TargetX = x;
+	}
+
+	public float getY() {
+		return Y;
+	}
+
+	public void setY(float y) {
+		Y = TargetY = y;
+	}
+
+	public boolean isCanRemove() {
+		return CanRemove;
 	}
 }

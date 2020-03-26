@@ -19,10 +19,9 @@ public class PlantVsZombies extends Game {
 
     public static final int WIDTH = 1080;
     public static final int HEIGHT = 600;
-    private OrthographicCamera gamecam;
+    public OrthographicCamera gamecam;
     private Viewport gameport;
     public SpriteBatch batch;
-
     @Override
     public void create() {
         batch = new SpriteBatch();
