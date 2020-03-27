@@ -2,10 +2,9 @@ package com.mygdx.game.Plants;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.mygdx.game.GameObjectFactory;
+import com.mygdx.game.Factories.GameObjectFactory;
 import com.mygdx.game.GifDecoder;
 import com.mygdx.game.Timers.PeashooterTimer;
-import com.mygdx.game.Timers.TimerFactory;
 
 
 public class PeaShooter extends Plant {
@@ -15,7 +14,6 @@ public class PeaShooter extends Plant {
         super(x, y);
         timer = new PeashooterTimer(this);
         timer.Start();
-        TimerFactory.Add(timer);
     }
 
     @Override
@@ -24,6 +22,11 @@ public class PeaShooter extends Plant {
         Dying = GifDecoder.loadGIFAnimation(Animation.PlayMode.NORMAL, Gdx.files.internal("PeaShooter\\Peashooter.gif").read());
         Attacking = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("PeaShooter\\Peashooter.gif").read());
         SetCurrentAnimation(Default);
+    }
+
+    @Override
+    public void OnClick() {
+
     }
 
     @Override

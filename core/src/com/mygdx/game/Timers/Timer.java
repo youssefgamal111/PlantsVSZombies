@@ -1,6 +1,7 @@
 package com.mygdx.game.Timers;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.game.Factories.TimerFactory;
 
 public abstract class Timer {
     private final float time;
@@ -12,6 +13,7 @@ public abstract class Timer {
         this.time = time;
         Started = false;
         Remove = false;
+        TimerFactory.Add(this);
     }
 
     public void Start() {

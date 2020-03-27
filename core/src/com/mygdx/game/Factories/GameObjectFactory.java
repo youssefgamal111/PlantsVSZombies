@@ -1,6 +1,10 @@
-package com.mygdx.game;
+package com.mygdx.game.Factories;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.GameMap;
+import com.mygdx.game.GameObject;
+import com.mygdx.game.Place;
+import com.mygdx.game.PlantVsZombies;
 import com.mygdx.game.Plants.Bullet;
 import com.mygdx.game.Plants.PeaShooter;
 import com.mygdx.game.Plants.Plant;
@@ -50,14 +54,14 @@ public class GameObjectFactory {
                 continue;
             }
             Game.batch.draw(gameObject.GetCurrentFrame(), gameObject.getX(), gameObject.getY());
-            gameObject.Render(Gdx.graphics.getDeltaTime());
+            gameObject.Render();
 
 
             if (gameObject instanceof Zombie) {
                 for (GameObject obj2 : GameObjects) {
                     if (obj2.Row != gameObject.Row || !(obj2 instanceof Bullet) || obj2.isCanRemove())
                         continue;
-                    if (obj2.getX() > gameObject.getX()) {
+                    if (obj2.getX() > gameObject.getX() + gameObject.getWidth() - 120) {
                         Zombie ToHit = (Zombie) gameObject;
                         ToHit.ReceiveShot((Bullet) obj2);
                     }
@@ -68,6 +72,16 @@ public class GameObjectFactory {
         }
         GameObjects.addAll(GameObjectsToAdd);
         GameObjectsToAdd.clear();
+    }
+
+    public static void RenderTouch(Vector2 coords) {
+        for (GameObject obj : GameObjects) {
+            if (coords.x < obj.getX() + obj.getWidth() && coords.x > obj.getX() &&
+                    coords.y < obj.getY() + obj.getHeight() && coords.y > obj.getY()) {
+                obj.OnClick();
+                return;
+            }
+        }
     }
 
     public static void AddZombie(Zombie z, int Row) {

@@ -26,6 +26,11 @@ public class NormalZombie extends Zombie {
     }
 
     @Override
+    public void OnClick() {
+
+    }
+
+    @Override
     protected void OnReceiveShot() {
         if (getHealth() == 5) {
             Walking = LostHeadWalking;

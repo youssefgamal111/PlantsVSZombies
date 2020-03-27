@@ -3,19 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mygdx.game.Cards;
+package com.mygdx.game.Images.Cards;
 
 /**
  * @author USER
  */
-public class hugewallnut extends Card {
-
-    public hugewallnut() {
-
-
-        super(50, "hugewallnut.png");
+public class Sunflower extends Card {
+    Sunflower() {
+        super(50, "sunflower.png");
 
 
     }
-
 }

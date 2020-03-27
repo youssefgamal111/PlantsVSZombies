@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mygdx.game.Cards;
+package com.mygdx.game.Images.Cards;
 
 /**
  * @author USER
  */
-public class puffshroom extends Card {
+public class PuffShroom extends Card {
 
 
-    public puffshroom() {
+    public PuffShroom() {
         super(0, "puffshroom.png");
     }
 }

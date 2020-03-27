@@ -1,8 +1,9 @@
-package com.mygdx.game;
+package com.mygdx.game.Factories;
 
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.Cards.Card;
-import com.mygdx.game.Cards.Image;
+import com.mygdx.game.Images.Cards.Card;
+import com.mygdx.game.Images.Image;
+import com.mygdx.game.PlantVsZombies;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,6 +25,7 @@ public class ImageFactory {
     public static void Render() {
         for (Iterator<Image> iterator = Images.iterator(); iterator.hasNext(); ) {
             Image img = iterator.next();
+            img.Render();
             Game.batch.draw(img.getImgTexture(), img.getX(), img.getY());
             if (img.isCanRemove())
                 iterator.remove();
@@ -43,9 +45,14 @@ public class ImageFactory {
     }
 
     public static void AddCard(Card Card) {
-        int y = 75 * (Images.size() + 1);
+        int y = PlantVsZombies.HEIGHT - (75 * (Images.size() + 1));
         Card.setY(y);
-        Images.add(Card);
+        ImagesToAdd.add(Card);
+
+    }
+
+    public static void AddImage(Image img) {
+        ImagesToAdd.add(img);
 
     }
 }

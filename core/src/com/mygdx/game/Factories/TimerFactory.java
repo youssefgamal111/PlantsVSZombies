@@ -1,4 +1,6 @@
-package com.mygdx.game.Timers;
+package com.mygdx.game.Factories;
+
+import com.mygdx.game.Timers.Timer;
 
 import java.util.ArrayList;
 import java.util.Iterator;

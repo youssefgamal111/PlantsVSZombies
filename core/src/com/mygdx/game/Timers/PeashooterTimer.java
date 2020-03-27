@@ -1,7 +1,7 @@
 package com.mygdx.game.Timers;
 
+import com.mygdx.game.Factories.GameObjectFactory;
 import com.mygdx.game.GameObject;
-import com.mygdx.game.GameObjectFactory;
 import com.mygdx.game.Plants.PeaShooter;
 import com.mygdx.game.Zombies.Zombie;
 

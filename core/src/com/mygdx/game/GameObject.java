@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -16,26 +17,28 @@ public abstract class GameObject {
 	private float TargetX, TargetY, animationElapsedTime;
 	private Animation<TextureRegion> currentAnimation;
 
-	public GameObject(float moveSpeed, float x, float y) {
-		MoveSpeed = moveSpeed;
-		X = TargetX = x;
-		Y = TargetY = y;
-		CanRemove = false;
-		Load();
-	}
+    public GameObject(float moveSpeed, float x, float y) {
+        MoveSpeed = moveSpeed;
+        X = TargetX = x;
+        Y = TargetY = y;
+        CanRemove = false;
+        Load();
+    }
 
-	protected abstract void Load();
+    protected abstract void Load();
 
-	protected abstract void OnRemove();
+    public abstract void OnClick();
 
-	protected abstract void OnMoveStart();
+    protected abstract void OnRemove();
 
-	protected abstract void OnMoveFinished();
-	
+    protected abstract void OnMoveStart();
 
-	public void SetCurrentAnimation(Animation<TextureRegion> animation) {
-		currentAnimation = animation;
-		animationElapsedTime = 0f;
+    protected abstract void OnMoveFinished();
+
+
+    public void SetCurrentAnimation(Animation<TextureRegion> animation) {
+        currentAnimation = animation;
+        animationElapsedTime = 0f;
 	}
 
 	public TextureRegion GetCurrentFrame() {
@@ -61,31 +64,32 @@ public abstract class GameObject {
 		return currentAnimation.isAnimationFinished(animationElapsedTime) && CanRemove;
 	}
 
-	public void Move(float x, float y) {
-		if (MoveSpeed == 0)
-			return;
-		if (X == x && Y == y)
-			return;
-		TargetX = x;
-		TargetY = y;
-		OnMoveStart();
-	}
+    public void Move(float x, float y) {
+        if (MoveSpeed == 0)
+            return;
+        if (X == x && Y == y)
+            return;
+        TargetX = x;
+        TargetY = y;
+        OnMoveStart();
+    }
 
-	protected void Render(float deltatime) {
-		animationElapsedTime += deltatime;
-		if (X == TargetX && Y == TargetY)
-			return;
-		if (X > TargetX)
-			X = Math.max(X - MoveSpeed * deltatime, TargetX);
-		if (X < TargetX)
-			X = Math.min(X + MoveSpeed * deltatime, TargetX);
-		if (Y > TargetY)
-			Y = Math.max(Y - MoveSpeed * deltatime, TargetY);
-		if (Y < TargetY)
-			Y = Math.min(Y + MoveSpeed * deltatime, TargetY);
-		if (X == TargetX && Y == TargetY) {
-			OnMoveFinished();
-		}
+    public void Render() {
+        float deltatime = Gdx.graphics.getDeltaTime();
+        animationElapsedTime += deltatime;
+        if (X == TargetX && Y == TargetY)
+            return;
+        if (X > TargetX)
+            X = Math.max(X - MoveSpeed * deltatime, TargetX);
+        else if (X < TargetX)
+            X = Math.min(X + MoveSpeed * deltatime, TargetX);
+        if (Y > TargetY)
+            Y = Math.max(Y - MoveSpeed * deltatime, TargetY);
+        else if (Y < TargetY)
+            Y = Math.min(Y + MoveSpeed * deltatime, TargetY);
+        if (X == TargetX && Y == TargetY) {
+            OnMoveFinished();
+        }
 	}
 
 	public void Stop() {

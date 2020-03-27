@@ -1,20 +1,10 @@
 package com.mygdx.game.Plants;
 
 
-
 import com.badlogic.gdx.Gdx;
-
 import com.badlogic.gdx.graphics.g2d.Animation;
-
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
-import com.mygdx.game.GameObject;
-
 import com.mygdx.game.GifDecoder;
-
 import com.mygdx.game.PlantVsZombies;
-
-import com.mygdx.game.Zombies.Zombie;
 
 
 
@@ -42,8 +32,10 @@ public class Pea extends Bullet {
 
     }
 
+    @Override
+    public void OnClick() {
 
-
+    }
 
 
 }

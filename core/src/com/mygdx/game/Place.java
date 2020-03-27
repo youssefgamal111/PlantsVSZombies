@@ -1,7 +1,7 @@
 package com.mygdx.game;
 
 public class Place {
-    final int iX, iY, fX, fY, x, y;
+    public final int iX, iY, fX, fY, x, y;
 
 
     private GameObject obj;
