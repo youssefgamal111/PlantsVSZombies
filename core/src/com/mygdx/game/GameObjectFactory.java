@@ -71,11 +71,12 @@ public class GameObjectFactory {
     }
 
     public static void AddPlant(Plant plant, Place place) {
-        if (place == null)
+        if (place == null || place.getObj() != null)
             return;
         plant.setX(place.iX + 10);
         plant.setY(place.iY + plant.getHeight() / 2);
         plant.Row = place.y;
+        place.setObj(plant);
         AddGameObject(plant);
     }
 
