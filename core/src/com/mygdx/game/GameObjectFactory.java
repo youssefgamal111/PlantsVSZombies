@@ -33,6 +33,15 @@ public class GameObjectFactory {
         return GameObjects;
     }
 
+    public static ArrayList<GameObject> GetObjectsInRow(int row) {
+        ArrayList<GameObject> result = new ArrayList<GameObject>();
+        for (GameObject obj : GameObjects) {
+            if (obj.Row == row)
+                result.add(obj);
+        }
+        return result;
+    }
+
     public static void Render() {
         for (Iterator<GameObject> iterator = GameObjects.iterator(); iterator.hasNext(); ) {
             GameObject gameObject = iterator.next();
@@ -70,8 +79,6 @@ public class GameObjectFactory {
     }
 
     public static void AddPlant(Plant plant, Place place) {
-        if (place == null || place.getObj() != null)
-            return;
         plant.setX(place.iX + 10);
         plant.setY(place.iY + plant.getHeight() / 2);
         plant.Row = place.y;

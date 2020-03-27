@@ -4,12 +4,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.mygdx.game.GameObjectFactory;
 import com.mygdx.game.GifDecoder;
-import com.mygdx.game.MainGameScreen;
+import com.mygdx.game.Timers.PeashooterTimer;
+import com.mygdx.game.Timers.TimerFactory;
+
 
 public class PeaShooter extends Plant {
+    private PeashooterTimer timer;
+
     public PeaShooter(float x, float y) {
         super(x, y);
-
+        timer = new PeashooterTimer(this);
+        timer.Start();
+        TimerFactory.Add(timer);
     }
 
     @Override
@@ -20,9 +26,21 @@ public class PeaShooter extends Plant {
         SetCurrentAnimation(Default);
     }
 
+    @Override
+    public void Remove() {
+        super.Remove();
+        timer.Remove();
+    }
+
     public void Shot() {
         Pea pp = new Pea(getX() + 35, getY() + 37);
         pp.Row = Row;
         GameObjectFactory.AddGameObject(pp);
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        timer.Remove();
     }
 }

@@ -2,7 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Rectangle;
 
 import javax.lang.model.util.Types;
 
@@ -72,7 +71,7 @@ public abstract class GameObject {
 		OnMoveStart();
 	}
 
-	public void Render(float deltatime) {
+	protected void Render(float deltatime) {
 		animationElapsedTime += deltatime;
 		if (X == TargetX && Y == TargetY)
 			return;

@@ -6,17 +6,20 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.game.*;
 import com.mygdx.game.Plants.PeaShooter;
+import com.mygdx.game.Timers.TimerFactory;
 
 public abstract class World {
     public PlantVsZombies Game;
     GameMap Map;
-    p_timer t=new p_timer();
+
     public World(PlantVsZombies game) {
         Game = game;
         ImageFactory.initialize(game);
         GameObjectFactory.initialize(game);
+        SunFactory.initialize(game);
+        TimerFactory.initialize();
     }
-    SunFactory sunFac=new SunFactory();
+
     public Texture background;
 
     public void Render() {
@@ -26,14 +29,17 @@ public abstract class World {
         Game.batch.draw(background, 0, 0);
         ImageFactory.Render();
         GameObjectFactory.Render();
+        SunFactory.render();
         Game.batch.end();
+        TimerFactory.Render();
+
         if (Gdx.input.justTouched()) {
             ImageFactory.RenderTouch(Game.getInputInGameWorld());
-            GameObjectFactory.AddPlant(new PeaShooter(0, 0), Map.findPlot(Game.getInputInGameWorld()));
+            Place place = Map.findPlot(Game.getInputInGameWorld());
+            if (place != null && place.getObj() == null)
+                GameObjectFactory.AddPlant(new PeaShooter(0, 0), place);
         }
 
-t.render();
-sunFac.render();
         if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
             GameObjectFactory.ShotTest();
         }
