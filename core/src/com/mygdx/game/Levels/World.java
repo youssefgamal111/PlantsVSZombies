@@ -4,23 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.mygdx.game.GameMap;
-import com.mygdx.game.GameObjectFactory;
-import com.mygdx.game.ImageFactory;
-import com.mygdx.game.PlantVsZombies;
+import com.mygdx.game.*;
 import com.mygdx.game.Plants.PeaShooter;
 
 public abstract class World {
     public PlantVsZombies Game;
     GameMap Map;
-
+    p_timer t=new p_timer();
     public World(PlantVsZombies game) {
         Game = game;
         ImageFactory.initialize(game);
         GameObjectFactory.initialize(game);
     }
-
+    SunFactory sunFac=new SunFactory();
     public Texture background;
 
     public void Render() {
@@ -36,7 +32,8 @@ public abstract class World {
             GameObjectFactory.AddPlant(new PeaShooter(0, 0), Map.findPlot(Game.getInputInGameWorld()));
         }
 
-
+t.render();
+sunFac.render();
         if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
             GameObjectFactory.ShotTest();
         }
