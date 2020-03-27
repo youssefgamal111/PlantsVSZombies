@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.mygdx.game.*;
 import com.mygdx.game.Plants.PeaShooter;
 
@@ -17,7 +16,7 @@ public abstract class World {
         ImageFactory.initialize(game);
         GameObjectFactory.initialize(game);
     }
-
+    SunFactory sunFac=new SunFactory();
     public Texture background;
 
     public void Render() {
@@ -34,7 +33,7 @@ public abstract class World {
         }
 
 t.render();
-
+sunFac.render();
         if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
             GameObjectFactory.ShotTest();
         }

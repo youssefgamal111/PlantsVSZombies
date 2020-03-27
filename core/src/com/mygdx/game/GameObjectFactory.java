@@ -1,14 +1,9 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.mygdx.game.GameObject;
-import com.mygdx.game.PlantVsZombies;
 import com.mygdx.game.Plants.Bullet;
-import com.mygdx.game.Plants.Pea;
 import com.mygdx.game.Plants.PeaShooter;
 import com.mygdx.game.Plants.Plant;
-import com.mygdx.game.Zombies.NormalZombie;
 import com.mygdx.game.Zombies.Zombie;
 
 import java.util.ArrayList;
