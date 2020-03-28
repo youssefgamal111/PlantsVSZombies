@@ -13,7 +13,7 @@ public class HugeWallNut extends Card {
     public HugeWallNut() {
 
 
-        super(50, "hugewallnut.png");
+        super(50, "Cards/hugewallnut.png");
 
 
     }

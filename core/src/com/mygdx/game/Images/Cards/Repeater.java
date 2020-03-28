@@ -11,7 +11,7 @@ package com.mygdx.game.Images.Cards;
 public class Repeater extends Card {
     public Repeater() {
 
-        super(100, "Repeater.png");
+        super(100, "Cards/Repeater.png");
 
 
     }

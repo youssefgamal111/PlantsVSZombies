@@ -12,6 +12,6 @@ public class PuffShroom extends Card {
 
 
     public PuffShroom() {
-        super(0, "puffshroom.png");
+        super(0, "Cards/puffshroom.png");
     }
 }

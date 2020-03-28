@@ -1,11 +1,9 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MainMenuScreen implements Screen {
     PlantVsZombies game;
@@ -27,10 +25,6 @@ public class MainMenuScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
-        if (Gdx.input.isTouched()) {
-            System.out.println(game.getInputInGameWorld().x);
-            System.out.println(game.getInputInGameWorld().y);
-        }
 
         if (game.getInputInGameWorld().x > 500 && game.getInputInGameWorld().x < 1000 &&
                 game.getInputInGameWorld().y < 640 - 50 && game.getInputInGameWorld().y > 640 - 200) {

@@ -10,7 +10,7 @@ package com.mygdx.game.Images.Cards;
  */
 public class Sunflower extends Card {
     Sunflower() {
-        super(50, "sunflower.png");
+        super(50, "Cards/sunflower.png");
 
 
     }

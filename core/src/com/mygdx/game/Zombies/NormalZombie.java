@@ -3,6 +3,7 @@ package com.mygdx.game.Zombies;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.game.Factories.GameObjectFactory;
 import com.mygdx.game.GifDecoder;
 
 public class NormalZombie extends Zombie {
@@ -35,6 +36,7 @@ public class NormalZombie extends Zombie {
         if (getHealth() == 5) {
             Walking = LostHeadWalking;
             SetCurrentAnimation(Walking);
+            GameObjectFactory.AddGameObject(new NormalZombieHead(getX(), getY()));
             Attacking = LostHeadAttacking;
         }
 

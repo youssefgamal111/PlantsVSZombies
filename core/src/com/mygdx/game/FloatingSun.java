@@ -24,6 +24,7 @@ public class FloatingSun extends GameObject {
 
     @Override
     public void OnClick() {
+        this.Stop();
         this.Remove();
         SunFactory.CollectedSuns += 100;
     }

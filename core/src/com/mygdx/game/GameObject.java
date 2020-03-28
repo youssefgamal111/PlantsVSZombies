@@ -60,16 +60,20 @@ public abstract class GameObject {
 		OnRemove();
 	}
 
-	public boolean CanRemove() {
-		return currentAnimation.isAnimationFinished(animationElapsedTime) && CanRemove;
+	private boolean IsMoving() {
+		return X != TargetX || Y != TargetY;
 	}
 
-    public void Move(float x, float y) {
-        if (MoveSpeed == 0)
-            return;
-        if (X == x && Y == y)
-            return;
-        TargetX = x;
+	public boolean CanRemove() {
+		return currentAnimation.isAnimationFinished(animationElapsedTime) && CanRemove && !IsMoving();
+	}
+
+	public void Move(float x, float y) {
+		if (MoveSpeed == 0)
+			return;
+		if (X == x && Y == y)
+			return;
+		TargetX = x;
         TargetY = y;
         OnMoveStart();
     }
