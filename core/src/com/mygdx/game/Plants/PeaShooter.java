@@ -1,6 +1,7 @@
 package com.mygdx.game.Plants;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.mygdx.game.Factories.GameObjectFactory;
 import com.mygdx.game.GifDecoder;
@@ -9,11 +10,14 @@ import com.mygdx.game.Timers.PeashooterTimer;
 
 public class PeaShooter extends Plant {
     private PeashooterTimer timer;
+    public static Sound pSound;
 
     public PeaShooter(float x, float y) {
         super(x, y);
         timer = new PeashooterTimer(this);
         timer.Start();
+        pSound=Gdx.audio.newSound(Gdx.files.internal("Peashooter\\pea_shoot_1.wav")); 
+
     }
 
     @Override
@@ -39,6 +43,7 @@ public class PeaShooter extends Plant {
         Pea pp = new Pea(getX() + 35, getY() + 37);
         pp.Row = Row;
         GameObjectFactory.AddGameObject(pp);
+        pSound.play();
     }
 
     @Override

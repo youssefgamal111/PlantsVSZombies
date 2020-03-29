@@ -2,6 +2,7 @@ package com.mygdx.game.Plants;
 
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.GifDecoder;
@@ -10,6 +11,7 @@ import com.mygdx.game.PlantVsZombies;
 
 public class Pea extends Bullet {
     private Animation<TextureRegion> Default, Hit;
+    public static Sound sound ;
 
     public Pea(float x, float y) {
 
@@ -21,7 +23,7 @@ public class Pea extends Bullet {
     @Override
 
     protected void Load() {
-
+        sound = Gdx.audio.newSound(Gdx.files.internal("pea_hit_1.wav"));    
         Default = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("PB00.gif").read());
 
         Hit = GifDecoder.loadGIFAnimation(Animation.PlayMode.NORMAL, Gdx.files.internal("PeaBulletHit.gif").read());
@@ -39,6 +41,7 @@ public class Pea extends Bullet {
 
     @Override
     protected void OnRemove() {
+    
         SetCurrentAnimation(Hit);
     }
 
