@@ -39,7 +39,7 @@ public class MainMenuScreen implements Screen {
                     game.getInputInGameWorld().y < 640 - 470 && game.getInputInGameWorld().y > 640 - 590) {
                 game.batch.draw(Exit1, 0, 0, 1080, 640);
                 if (Gdx.input.isTouched()) {
-                    this.dispose();
+                    game.dispose();
                     game.setScreen(new ExitScreen(game));
                 }
             } else {

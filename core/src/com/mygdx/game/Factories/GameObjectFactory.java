@@ -61,7 +61,7 @@ public class GameObjectFactory {
                 for (GameObject obj2 : GameObjects) {
                     if (obj2.Row != gameObject.Row || !(obj2 instanceof Bullet) || obj2.isCanRemove())
                         continue;
-                    if (obj2.getX() > gameObject.getX() + gameObject.getWidth() - 120) {
+                    if (obj2.getX() > gameObject.getX() + 35) {
                         Zombie ToHit = (Zombie) gameObject;
                         ToHit.ReceiveShot((Bullet) obj2);
                     }

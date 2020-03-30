@@ -7,9 +7,9 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class ExitScreen implements Screen {
     PlantVsZombies game;
-    private Texture Exit2 = new Texture(Gdx.files.internal("Screenshot (247).png"));
-    private Texture Exit3 = new Texture(Gdx.files.internal("Screenshot (248).png"));
-    private Texture Exit4 = new Texture(Gdx.files.internal("Screenshot (249).png"));
+    private Texture Exit2 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (247).png"));
+    private Texture Exit3 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (248).png"));
+    private Texture Exit4 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (249).png"));
 
     public ExitScreen(PlantVsZombies game) {
         this.game = game;
@@ -26,7 +26,7 @@ public class ExitScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
         game.batch.draw(Exit2, 0, 0, 1080, 640);
-        if(Gdx.input.getX() > 300 && Gdx.input.getX() < 515 && Gdx.input.getY() > 400 && Gdx.input.getY() < 445)
+        if(Gdx.input.getX() > 300 && Gdx.input.getX() < 515 && Gdx.input.getY() > 355 && Gdx.input.getY() < 400)
         {
             game.batch.draw(Exit3, 0, 0, 1080, 640);
             if (Gdx.input.isTouched())
@@ -35,7 +35,7 @@ public class ExitScreen implements Screen {
                 game.batch.end();
             }
         }
-        else if(Gdx.input.getX() > 535 && Gdx.input.getX() < 750 && Gdx.input.getY() > 400 && Gdx.input.getY() < 445)
+        else if(Gdx.input.getX() > 535 && Gdx.input.getX() < 750 && Gdx.input.getY() > 355 && Gdx.input.getY() < 400)
         {
             game.batch.draw(Exit4, 0, 0, 1080, 640);
             if (Gdx.input.isTouched())
