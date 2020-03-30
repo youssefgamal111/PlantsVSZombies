@@ -10,7 +10,7 @@ import com.mygdx.game.Timers.DropSunTimer;
 public class SunFactory {
    private final static BitmapFont font = new BitmapFont(Gdx.files.internal("fonts\\FbUsv8C5eI.ttf.fnt"), false);
     private static final DropSunTimer timer = new DropSunTimer();
-    public static int CollectedSuns;
+    private static int CollectedSuns;
     private static PlantVsZombies Game;
 
     public static void initialize(PlantVsZombies game) {
@@ -29,6 +29,16 @@ public class SunFactory {
         FloatingSun s = new FloatingSun(x, 500);
         s.Move(x, y);
         GameObjectFactory.AddGameObject(s);
+    }
+
+    public static int getCollectedSuns() {
+        return CollectedSuns;
+    }
+
+    public static void setCollectedSuns(int collectedSuns) {
+        CollectedSuns = collectedSuns;
+        ImageFactory.UpdateCards();
+
     }
 }
 

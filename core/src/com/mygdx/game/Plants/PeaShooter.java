@@ -10,7 +10,7 @@ import com.mygdx.game.Timers.PeashooterTimer;
 
 public class PeaShooter extends Plant {
     private PeashooterTimer timer;
-    public static Sound pSound;
+    private static Sound pSound;
 
     public PeaShooter(float x, float y) {
         super(x, y);

@@ -8,7 +8,10 @@ package com.mygdx.game.Images.Cards;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.game.Factories.SelectionHandler;
+import com.mygdx.game.Factories.SunFactory;
 import com.mygdx.game.Images.Image;
+import com.mygdx.game.Plants.Plant;
 
 /**
  * @author USER
@@ -43,7 +46,20 @@ public abstract class Card extends Image {
 
     @Override
     public void OnClick() {
-        System.out.println("test");
+        if (SunFactory.getCollectedSuns() >= this.Price)
+            SelectionHandler.SelectedCard = this;
     }
 
+    public abstract Plant GetPlant();
+
+    public void Update() {
+        if (SunFactory.getCollectedSuns() >= this.Price)
+            setImgTexture(selected);
+        else
+            setImgTexture(unselected);
+    }
+
+    public int getPrice() {
+        return Price;
+    }
 }

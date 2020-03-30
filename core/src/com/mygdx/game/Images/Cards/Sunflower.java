@@ -5,6 +5,8 @@
  */
 package com.mygdx.game.Images.Cards;
 
+import com.mygdx.game.Plants.Plant;
+
 /**
  * @author USER
  */
@@ -13,5 +15,10 @@ public class Sunflower extends Card {
         super(50, "Cards/sunflower.png");
 
 
+    }
+
+    @Override
+    public Plant GetPlant() {
+        return null;
     }
 }

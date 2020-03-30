@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.GameObject;
 import com.mygdx.game.Plants.Bullet;
-import com.mygdx.game.Plants.Pea;
 
 public abstract class Zombie extends GameObject {
     protected Animation<TextureRegion> Walking, Attacking, Dying, Default;
@@ -55,8 +54,10 @@ public abstract class Zombie extends GameObject {
     }
 
     public void ReceiveShot(Bullet bullet) {
-        Pea.sound.play();
+        if (this.isCanRemove())
+            return;
         bullet.Stop();
+        bullet.PlaySound();
         bullet.Remove();
         OnReceiveShot();
         Health -= bullet.getPower();

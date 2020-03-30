@@ -5,6 +5,8 @@
  */
 package com.mygdx.game.Images.Cards;
 
+import com.mygdx.game.Plants.Plant;
+
 /**
  * @author USER
  */
@@ -18,4 +20,8 @@ public class HugeWallNut extends Card {
 
     }
 
+    @Override
+    public Plant GetPlant() {
+        return null;
+    }
 }

@@ -45,8 +45,9 @@ public class ImageFactory {
     }
 
     public static void AddCard(Card Card) {
-        int y = PlantVsZombies.HEIGHT - (75 * (Images.size() + 1));
+        int y = PlantVsZombies.HEIGHT - (75 * (Images.size() + ImagesToAdd.size()));
         Card.setY(y);
+        Card.Update();
         ImagesToAdd.add(Card);
 
     }
@@ -54,6 +55,15 @@ public class ImageFactory {
     public static void AddImage(Image img) {
         ImagesToAdd.add(img);
 
+    }
+
+    public static void UpdateCards() {
+        for (Image img : Images) {
+            if (!(img instanceof Card))
+                continue;
+            Card c = (Card) img;
+            c.Update();
+        }
     }
 }
       

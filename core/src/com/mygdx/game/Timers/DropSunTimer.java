@@ -4,7 +4,7 @@ import com.mygdx.game.Factories.SunFactory;
 
 public class DropSunTimer extends Timer {
     public DropSunTimer() {
-        super(20f);
+        super(5f);
     }
 
     @Override
