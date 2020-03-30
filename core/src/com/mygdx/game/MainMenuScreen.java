@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 
@@ -10,9 +11,11 @@ public class MainMenuScreen implements Screen {
     private Texture BackGroundImg1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (234).png"));
     private Texture BackGroundImg2 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (235).png"));
     private Texture Exit1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (245).png"));
-
+    static Sound bgSound;
     public MainMenuScreen(PlantVsZombies game) {
         this.game = game;
+         bgSound = Gdx.audio.newSound(Gdx.files.internal("MainMenuScreen\\intro.wav")); 
+         bgSound.play();
     }
 
     @Override
@@ -32,6 +35,7 @@ public class MainMenuScreen implements Screen {
             if (Gdx.input.isTouched()) {
                 this.dispose();
                 game.setScreen(new MainGameScreen(game));
+                MainMenuScreen.bgSound.stop();
             }
         } else {
             game.batch.draw(BackGroundImg1, 0, 0, 1080, 640);

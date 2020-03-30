@@ -8,7 +8,7 @@ import com.mygdx.game.PlantVsZombies;
 import com.mygdx.game.Timers.DropSunTimer;
 
 public class SunFactory {
-    private final static BitmapFont font = new BitmapFont(Gdx.files.internal("font.fnt"), false);
+   private final static BitmapFont font = new BitmapFont(Gdx.files.internal("fonts\\FbUsv8C5eI.ttf.fnt"), false);
     private static final DropSunTimer timer = new DropSunTimer();
     public static int CollectedSuns;
     private static PlantVsZombies Game;
