@@ -1,13 +1,15 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 
-public class MainMenuScreen implements Screen {
+public class MainMenuScreen implements Screen, Input.TextInputListener {
     PlantVsZombies game;
+    String text;
     private Texture BackGroundImg1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (234).png"));
     private Texture BackGroundImg2 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (235).png"));
     private Texture Exit1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (245).png"));
@@ -33,6 +35,8 @@ public class MainMenuScreen implements Screen {
                 game.getInputInGameWorld().y < 640 - 50 && game.getInputInGameWorld().y > 640 - 200) {
             game.batch.draw(BackGroundImg2, 0, 0, 1080, 640);
             if (Gdx.input.isTouched()) {
+                Gdx.input.getTextInput(this,"Title","Default text","");
+                Gdx.app.log("Text",text);
                 this.dispose();
                 game.setScreen(new MainGameScreen(game));
                 MainMenuScreen.bgSound.stop();
@@ -79,5 +83,15 @@ public class MainMenuScreen implements Screen {
     @Override
     public void dispose() {
 
+    }
+
+    @Override
+    public void input(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public void canceled() {
+        text = "Cancelled";
     }
 }
