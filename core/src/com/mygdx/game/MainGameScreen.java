@@ -16,7 +16,7 @@ public class MainGameScreen implements Screen {
         this.game = game;
         w = new Level1(game);
         mgSound=Gdx.audio.newSound(Gdx.files.internal("MainMenuScreen\\dayBG.wav")); 
-        mgSound.play();
+        mgSound.loop();
     }
 
     @Override

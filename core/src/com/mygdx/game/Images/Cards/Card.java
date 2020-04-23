@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mygdx.game.Images.Cards;
 
 import com.badlogic.gdx.Gdx;
@@ -13,14 +8,7 @@ import com.mygdx.game.Factories.SunFactory;
 import com.mygdx.game.Images.Image;
 import com.mygdx.game.Plants.Plant;
 
-/**
- * @author USER
- */
 public abstract class Card extends Image {
-
-    /**
-     * @return the y
-     */
 
     private final int Price;
     private final TextureRegion selected, unselected;

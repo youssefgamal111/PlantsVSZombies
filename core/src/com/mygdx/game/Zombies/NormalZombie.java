@@ -8,7 +8,7 @@ import com.mygdx.game.GifDecoder;
 
 public class NormalZombie extends Zombie {
     public NormalZombie(float x, float y) {
-        super(30, x, y, 10);
+        super(10, x, y, 10);
     }
 
     protected Animation<TextureRegion> Standing, NormalAttacking, LostHeadAttacking, NormalWalking, LostHeadWalking;

@@ -10,14 +10,14 @@ public class GameMap {
     public final static int[][] RowCords = {{30, 130}, {130, 220}, {220, 320}, {320, 420}, {420, 520}};
 
     public GameMap(int Rows) {
-        this.Rows = 5;
+        this.Rows = Rows;
         GenerateMap();
     }
 
     private void GenerateMap() {
         map = new Place[this.Rows][this.NColumns];
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 9; j++) {
+        for (int i = 0; i < Rows; i++) {
+            for (int j = 0; j < NColumns; j++) {
                 //                    x  y       ix                iy                fx               fy
                 map[i][j] = new Place(j, i, ColumnCords[j][0], RowCords[i][0], ColumnCords[j][1], RowCords[i][1]);
             }
