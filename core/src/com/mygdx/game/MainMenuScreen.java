@@ -17,7 +17,7 @@ public class MainMenuScreen implements Screen, Input.TextInputListener {
     public MainMenuScreen(PlantVsZombies game) {
         this.game = game;
          bgSound = Gdx.audio.newSound(Gdx.files.internal("MainMenuScreen\\intro.wav")); 
-         bgSound.play();
+         bgSound.loop();
     }
 
     @Override

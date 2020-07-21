@@ -8,9 +8,6 @@ import com.mygdx.game.PlantVsZombies;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/**
- * @author USER
- */
 public class ImageFactory {
     private static PlantVsZombies Game;
     private static ArrayList<Image> Images;
