@@ -35,6 +35,12 @@ public abstract class Card extends Image {
     }
 
     @Override
+    public void Render() {
+        super.Render();
+
+    }
+
+    @Override
     protected void OnMoveStart() {
 
     }
@@ -47,7 +53,7 @@ public abstract class Card extends Image {
     @Override
     public void OnClick() {
         if (SunFactory.getCollectedSuns() >= this.Price)
-            SelectionHandler.SelectedCard = this;
+            SelectionHandler.setSelectedCard(this);
     }
 
     public abstract Plant GetPlant();

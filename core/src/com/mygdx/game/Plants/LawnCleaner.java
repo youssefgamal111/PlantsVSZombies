@@ -1,3 +1,4 @@
+
 package com.mygdx.game.Plants;
 
 import com.badlogic.gdx.Gdx;
@@ -5,9 +6,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.GifDecoder;
 import com.mygdx.game.PlantVsZombies;
-
 public class LawnCleaner extends Bullet {
-    private static Animation<TextureRegion> FloatingSun =
+    private static Animation<TextureRegion> LoanCleaner =
             GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("lawncleaner.gif").read());
 
     public LawnCleaner(float x, float y, int row) {
@@ -17,7 +17,7 @@ public class LawnCleaner extends Bullet {
 
     @Override
     protected void Load() {
-        SetCurrentAnimation(FloatingSun);
+        SetCurrentAnimation(LoanCleaner);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class LawnCleaner extends Bullet {
     }
 
     @Override
-    protected void OnMoveStart() {
+    public void OnMoveStart() {
 
     }
 

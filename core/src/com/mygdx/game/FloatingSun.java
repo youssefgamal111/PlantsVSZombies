@@ -34,11 +34,11 @@ public class FloatingSun extends GameObject {
     }
 
     @Override
-    protected void OnMoveStart() {
+    public void OnMoveStart() {
     }
 
     @Override
-    protected void OnMoveFinished() {
+    public void OnMoveFinished() {
         timer.Start();
     }
 

@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 public abstract class Image {
-    public TextureRegion imgTexture;
-    public Rectangle rect;
+    private TextureRegion imgTexture;
+    private Rectangle rect;
     private float X, Y;
     private float TargetX, TargetY;
     private float MoveSpeed;
@@ -100,6 +100,10 @@ public abstract class Image {
 
     public boolean isCanRemove() {
         return CanRemove;
+    }
+
+    public Rectangle getRect() {
+        return rect;
     }
 
     public void Remove() {

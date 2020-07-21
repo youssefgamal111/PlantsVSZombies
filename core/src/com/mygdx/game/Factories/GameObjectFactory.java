@@ -30,7 +30,6 @@ public class GameObjectFactory {
                 ((PeaShooter) obj).Shot();
             }
         }
-
     }
 
     public static ArrayList<GameObject> getGameObjects() {

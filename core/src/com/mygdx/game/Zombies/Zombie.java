@@ -39,12 +39,12 @@ public abstract class Zombie extends GameObject {
     }
 
     @Override
-    protected void OnMoveFinished() {
+    public void OnMoveFinished() {
         SetCurrentAnimation(Default);
     }
 
     @Override
-    protected void OnMoveStart() {
+    public void OnMoveStart() {
         SetCurrentAnimation(Walking);
 
     }

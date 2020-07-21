@@ -37,7 +37,7 @@ public class ImageFactory {
     public static void RenderTouch(Vector2 coords) {
         for (int i = 0; i < Images.size(); i++) {
             Image img = Images.get(i);
-            if (img.rect.contains(coords)) {
+            if (img.getRect().contains(coords)) {
                 img.OnClick();
                 return;
             }

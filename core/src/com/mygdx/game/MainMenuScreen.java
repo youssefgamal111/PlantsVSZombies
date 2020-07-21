@@ -35,8 +35,8 @@ public class MainMenuScreen implements Screen, Input.TextInputListener {
                 game.getInputInGameWorld().y < 640 - 50 && game.getInputInGameWorld().y > 640 - 200) {
             game.batch.draw(BackGroundImg2, 0, 0, 1080, 640);
             if (Gdx.input.isTouched()) {
-                Gdx.input.getTextInput(this,"Title","Default text","");
-                Gdx.app.log("Text",text);
+                //   Gdx.input.getTextInput(this,"Title","Default text","");
+                //   Gdx.app.log("Text",text);
                 this.dispose();
                 game.setScreen(new MainGameScreen(game));
                 MainMenuScreen.bgSound.stop();

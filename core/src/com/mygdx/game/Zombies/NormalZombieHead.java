@@ -31,12 +31,12 @@ public class NormalZombieHead extends GameObject {
     }
 
     @Override
-    protected void OnMoveStart() {
+    public void OnMoveStart() {
 
     }
 
     @Override
-    protected void OnMoveFinished() {
+    public void OnMoveFinished() {
 
     }
 }

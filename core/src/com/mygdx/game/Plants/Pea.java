@@ -21,7 +21,7 @@ public class Pea extends Bullet {
     @Override
 
     protected void Load() {
-        sound = Gdx.audio.newSound(Gdx.files.internal("pea_hit_1.wav"));    
+        setSound(Gdx.audio.newSound(Gdx.files.internal("pea_hit_1.wav")));
         Default = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("PB00.gif").read());
 
         Hit = GifDecoder.loadGIFAnimation(Animation.PlayMode.NORMAL, Gdx.files.internal("PeaBulletHit.gif").read());

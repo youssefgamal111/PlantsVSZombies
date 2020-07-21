@@ -5,7 +5,8 @@ import com.mygdx.game.Place;
 import com.mygdx.game.Plants.Plant;
 
 public class SelectionHandler {
-    public static Card SelectedCard;
+    private static Card SelectedCard;
+
 
     private static void Render() {
         if (SelectedCard == null)
@@ -27,5 +28,13 @@ public class SelectionHandler {
         SunFactory.setCollectedSuns(SunFactory.getCollectedSuns() - SelectedCard.getPrice());
         SelectedCard = null;
 
+    }
+
+    public static Card getSelectedCard() {
+        return SelectedCard;
+    }
+
+    public static void setSelectedCard(Card selectedCard) {
+        SelectedCard = selectedCard;
     }
 }

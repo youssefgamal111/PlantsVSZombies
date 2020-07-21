@@ -4,7 +4,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.mygdx.game.GameObject;
 
 public abstract class Bullet extends GameObject {
-    public Sound sound;
+    private Sound sound;
     private final int Power;
 
     public Bullet(float moveSpeed, float x, float y, int Power) {
@@ -13,13 +13,17 @@ public abstract class Bullet extends GameObject {
     }
 
     @Override
-    protected void OnMoveStart() {
+    public void OnMoveStart() {
 
     }
 
     public void PlaySound() {
         if (sound != null)
             sound.play();
+    }
+
+    public void setSound(Sound sound) {
+        this.sound = sound;
     }
 
     @Override

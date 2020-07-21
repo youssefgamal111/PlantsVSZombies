@@ -20,12 +20,12 @@ public abstract class Plant extends GameObject {
     }
 
     @Override
-    protected void OnMoveStart() {
+    public void OnMoveStart() {
         //nothing
     }
 
     @Override
-    protected void OnMoveFinished() {
+    public void OnMoveFinished() {
         //nothing
     }
 }

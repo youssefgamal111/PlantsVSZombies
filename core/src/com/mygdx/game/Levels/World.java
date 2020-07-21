@@ -10,7 +10,7 @@ import com.mygdx.game.Place;
 import com.mygdx.game.PlantVsZombies;
 
 public abstract class World {
-    public PlantVsZombies Game;
+    private PlantVsZombies Game;
     GameMap Map;
 
     public World(PlantVsZombies game) {
