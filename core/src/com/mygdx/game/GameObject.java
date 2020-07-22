@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import javax.lang.model.util.Types;
 
 
-public abstract class GameObject implements IClickable, IMoveable {
+public abstract class GameObject implements IMoveable {
 	private final float MoveSpeed;
 	protected Types rect;
 	private float X;

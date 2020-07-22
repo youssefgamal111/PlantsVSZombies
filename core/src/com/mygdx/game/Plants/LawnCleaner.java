@@ -20,10 +20,6 @@ public class LawnCleaner extends Bullet {
         SetCurrentAnimation(LoanCleaner);
     }
 
-    @Override
-    public void OnClick() {
-
-    }
 
     @Override
     protected void OnRemove() {

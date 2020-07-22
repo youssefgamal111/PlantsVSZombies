@@ -32,10 +32,6 @@ public class Pea extends Bullet {
 
     }
 
-    @Override
-    public void OnClick() {
-
-    }
 
     @Override
     protected void OnRemove() {

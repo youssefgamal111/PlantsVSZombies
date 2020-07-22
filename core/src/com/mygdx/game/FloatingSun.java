@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.Factories.SunFactory;
 import com.mygdx.game.Timers.FloatingSunTimer;
 
-public class FloatingSun extends GameObject {
+public class FloatingSun extends GameObject implements IClickable {
     private Animation<TextureRegion> FloatingSun;
     private final FloatingSunTimer timer;
 
@@ -31,6 +31,7 @@ public class FloatingSun extends GameObject {
 
     @Override
     protected void OnRemove() {
+        timer.Remove();
     }
 
     @Override

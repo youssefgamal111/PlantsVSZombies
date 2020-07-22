@@ -20,10 +20,6 @@ public class NormalZombieHead extends GameObject {
         Remove();
     }
 
-    @Override
-    public void OnClick() {
-
-    }
 
     @Override
     protected void OnRemove() {

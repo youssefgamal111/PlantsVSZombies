@@ -39,8 +39,6 @@ public abstract class World {
             GameObjectFactory.RenderTouch(Game.getInputInGameWorld());
             Place place = Map.findPlot(Game.getInputInGameWorld());
             SelectionHandler.RenderTouch(place);
-            //  if (place != null && place.getObj() == null)
-            //      GameObjectFactory.AddPlant(new PeaShooter(0, 0), place);
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {

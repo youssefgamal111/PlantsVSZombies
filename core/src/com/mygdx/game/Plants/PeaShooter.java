@@ -28,10 +28,6 @@ public class PeaShooter extends Plant {
         SetCurrentAnimation(Default);
     }
 
-    @Override
-    public void OnClick() {
-
-    }
 
     @Override
     public void Remove() {

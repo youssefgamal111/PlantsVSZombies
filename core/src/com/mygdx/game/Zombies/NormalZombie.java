@@ -8,7 +8,7 @@ import com.mygdx.game.GifDecoder;
 
 public class NormalZombie extends Zombie {
     public NormalZombie(float x, float y) {
-        super(10, x, y, 10);
+        super(10, x, y, 10, 2);
     }
 
     protected Animation<TextureRegion> Standing, NormalAttacking, LostHeadAttacking, NormalWalking, LostHeadWalking;
@@ -23,13 +23,11 @@ public class NormalZombie extends Zombie {
         Dying = GifDecoder.loadGIFAnimation(Animation.PlayMode.NORMAL, Gdx.files.internal("NormalZombie\\ZombieDie.gif").read());
         Default = Standing;
         Walking = NormalWalking;
+        Attacking = NormalAttacking;
         SetCurrentAnimation(Default);
     }
 
-    @Override
-    public void OnClick() {
 
-    }
 
     @Override
     protected void OnReceiveShot() {

@@ -8,8 +8,8 @@ public class SelectionHandler {
     private static Card SelectedCard;
 
 
-    private static void Render() {
-        if (SelectedCard == null)
+    private static void Render(Place p) {
+        if (SelectedCard == null || p == null)
             return;
 
     }

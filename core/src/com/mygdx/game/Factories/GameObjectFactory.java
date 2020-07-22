@@ -1,12 +1,8 @@
 package com.mygdx.game.Factories;
 
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.GameMap;
-import com.mygdx.game.GameObject;
-import com.mygdx.game.Place;
-import com.mygdx.game.PlantVsZombies;
+import com.mygdx.game.*;
 import com.mygdx.game.Plants.Bullet;
-import com.mygdx.game.Plants.PeaShooter;
 import com.mygdx.game.Plants.Plant;
 import com.mygdx.game.Zombies.Zombie;
 
@@ -26,8 +22,8 @@ public class GameObjectFactory {
 
     public static void ShotTest() {
         for (GameObject obj : GameObjects) {
-            if (obj instanceof PeaShooter) {
-                ((PeaShooter) obj).Shot();
+            if (obj instanceof Zombie) {
+                ((Zombie) obj).StartAttack(null);
             }
         }
     }
@@ -75,9 +71,11 @@ public class GameObjectFactory {
 
     public static void RenderTouch(Vector2 coords) {
         for (GameObject obj : GameObjects) {
+            if (!(obj instanceof IClickable))
+                continue;
             if (coords.x < obj.getX() + obj.getWidth() && coords.x > obj.getX() &&
                     coords.y < obj.getY() + obj.getHeight() && coords.y > obj.getY()) {
-                obj.OnClick();
+                ((IClickable) obj).OnClick();
                 return;
             }
         }
