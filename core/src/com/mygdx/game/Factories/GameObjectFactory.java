@@ -2,7 +2,6 @@ package com.mygdx.game.Factories;
 
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.*;
-import com.mygdx.game.Plants.Bullet;
 import com.mygdx.game.Plants.Plant;
 import com.mygdx.game.Zombies.Zombie;
 
@@ -54,11 +53,21 @@ public class GameObjectFactory {
 
             if (gameObject instanceof Zombie) {
                 for (GameObject obj2 : GameObjects) {
-                    if (obj2.Row != gameObject.Row || !(obj2 instanceof Bullet) || obj2.isCanRemove())
+                    if (obj2.Row != gameObject.Row || obj2.getClass() == gameObject.getClass() || obj2.isCanRemove())
                         continue;
-                    if (obj2.getX() > gameObject.getX() + 35) {
-                        Zombie ToHit = (Zombie) gameObject;
-                        ToHit.ReceiveShot((Bullet) obj2);
+                    if (obj2 instanceof IAttacker) {
+                        IAttacker attacker = (IAttacker) obj2;
+                        if (attacker.CanAttack(gameObject)) {
+                            IDamageable ToHit = (IDamageable) gameObject;
+                            attacker.StartAttack(ToHit);
+                            ToHit.ReceiveShot(attacker);
+                        }
+                    } else if (obj2 instanceof IDamageable) {
+                        IAttacker attacker = (IAttacker) gameObject;
+                        if (attacker.CanAttack(obj2)) {
+                            IDamageable ToHit = (IDamageable) obj2;
+                            attacker.StartAttack(ToHit);
+                        }
                     }
                 }
             }

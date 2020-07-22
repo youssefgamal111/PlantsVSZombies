@@ -13,7 +13,7 @@ public class PeaShooter extends Plant {
     private static Sound pSound;
 
     public PeaShooter(float x, float y) {
-        super(x, y);
+        super(x, y, 10);
         timer = new PeashooterTimer(this);
         timer.Start();
         pSound=Gdx.audio.newSound(Gdx.files.internal("Peashooter\\pea_shoot_1.wav")); 

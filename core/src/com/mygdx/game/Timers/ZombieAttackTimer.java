@@ -5,7 +5,7 @@ import com.mygdx.game.Zombies.Zombie;
 
 public class ZombieAttackTimer extends Timer {
     Zombie zombie;
-    IDamageable plant;
+    IDamageable obj;
 
     public ZombieAttackTimer(Zombie zombie) {
         super(1f);
@@ -13,11 +13,11 @@ public class ZombieAttackTimer extends Timer {
     }
 
     public void SetObject(IDamageable obj) {
-        this.plant = plant;
+        this.obj = obj;
     }
 
     @Override
     public void task() {
-        plant.ReceiveShot(zombie);
+        obj.ReceiveShot(zombie);
     }
 }

@@ -4,12 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-import javax.lang.model.util.Types;
-
-
 public abstract class GameObject implements IMoveable {
 	private final float MoveSpeed;
-	protected Types rect;
+	protected State state;
 	private float X;
 	private float Y;
 	public int Row;
@@ -56,7 +53,7 @@ public abstract class GameObject implements IMoveable {
 
 	@Override
 	public boolean IsMoving() {
-		return X != TargetX || Y != TargetY;
+		return this.state == State.Moving;
 	}
 
 	public boolean CanRemove() {
@@ -72,6 +69,7 @@ public abstract class GameObject implements IMoveable {
 		TargetX = x;
 		TargetY = y;
 		OnMoveStart();
+		this.state = State.Moving;
 	}
 
     public void Render() {
@@ -88,13 +86,15 @@ public abstract class GameObject implements IMoveable {
         else if (Y < TargetY)
             Y = Math.min(Y + MoveSpeed * deltatime, TargetY);
         if (X == TargetX && Y == TargetY) {
-            OnMoveFinished();
+			OnMoveFinished();
+			this.state = State.Static;
         }
 	}
 
 	public void Stop() {
 		TargetX = X;
 		TargetY = Y;
+		this.state = State.Static;
 	}
 
 	public float getX() {

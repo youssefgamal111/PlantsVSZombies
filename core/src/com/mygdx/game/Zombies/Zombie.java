@@ -4,14 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.mygdx.game.GameObject;
-import com.mygdx.game.IAttackable;
-import com.mygdx.game.IDamageable;
+import com.mygdx.game.*;
 import com.mygdx.game.Timers.ZombieAttackTimer;
 
-public abstract class Zombie extends GameObject implements IDamageable, IAttackable {
+public abstract class Zombie extends GameObject implements IDamageable, IAttacker {
     protected Animation<TextureRegion> Walking, Attacking, Dying, Default;
-    ZombieAttackTimer attacktimer;
+    ZombieAttackTimer AttackTimer;
     private int Health;
     private int Power;
     public static Sound eatSound;
@@ -20,7 +18,7 @@ public abstract class Zombie extends GameObject implements IDamageable, IAttacka
         super(moveSpeed, x, y);
         this.Health = Health;
         this.Power = Power;
-        attacktimer = new ZombieAttackTimer(this);
+        AttackTimer = new ZombieAttackTimer(this);
         eatSound = Gdx.audio.newSound(Gdx.files.internal("NormalZombie\\zombie_eat_1.wav"));
     }
 
@@ -37,6 +35,7 @@ public abstract class Zombie extends GameObject implements IDamageable, IAttacka
     protected void OnRemove() {
         Stop();
         SetCurrentAnimation(Dying);
+        AttackTimer.Remove();
     }
 
     @Override
@@ -55,32 +54,44 @@ public abstract class Zombie extends GameObject implements IDamageable, IAttacka
     }
 
     @Override
-    public void ReceiveShot(IAttackable bullet) {
+    public void ReceiveShot(IAttacker attacker) {
         if (this.isCanRemove())
             return;
-        bullet.StartAttack(this);
+        attacker.StartAttack(this);
+        if (attacker instanceof IExplodeable)
+            ((IExplodeable) attacker).Explode();
         OnReceiveShot();
-        Health -= bullet.getPower();
+        Health -= attacker.getPower();
         if (Health <= 0)
             this.Remove();
     }
 
     @Override
     public void StartAttack(IDamageable object) {
+        if (state == State.Attacking)
+            return;
         Stop();
         SetCurrentAnimation(Attacking);
-        attacktimer.SetObject(object);
-        attacktimer.Start();
+        this.state = State.Attacking;
+        AttackTimer.SetObject(object);
+        AttackTimer.Start();
     }
 
     @Override
     public void StopAttack() {
-        attacktimer.Stop();
+        AttackTimer.Stop();
         Move(0, getY());
 
     }
 
+    @Override
     public int getPower() {
         return Power;
+    }
+
+    @Override
+    public boolean CanAttack(GameObject obj) {
+
+        return getX() < obj.getX();
     }
 }

@@ -3,15 +3,16 @@ package com.mygdx.game.Plants;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.GameObject;
-import com.mygdx.game.IAttackable;
+import com.mygdx.game.IAttacker;
 import com.mygdx.game.IDamageable;
 
 public abstract class Plant extends GameObject implements IDamageable {
     protected Animation<TextureRegion> Attacking, Dying, Default;
     private int Health;
 
-    public Plant(float x, float y) {
+    public Plant(float x, float y, int Health) {
         super(0, x, y);
+        this.Health = Health;
     }
 
     @Override
@@ -37,7 +38,7 @@ public abstract class Plant extends GameObject implements IDamageable {
     }
 
     @Override
-    public void ReceiveShot(IAttackable z) {
+    public void ReceiveShot(IAttacker z) {
         if (this.isCanRemove())
             return;
         Health -= z.getPower();

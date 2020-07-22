@@ -1,7 +1,7 @@
 package com.mygdx.game;
 
 public interface IDamageable {
-    void ReceiveShot(IAttackable attacker);
+    void ReceiveShot(IAttacker attacker);
 
     int getHealth();
 }

@@ -35,4 +35,6 @@ public class LawnCleaner extends Bullet {
     public void OnMoveFinished() {
         super.Remove();
     }
+
+
 }

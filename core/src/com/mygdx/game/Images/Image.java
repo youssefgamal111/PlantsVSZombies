@@ -4,8 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.mygdx.game.IClickable;
 
-public abstract class Image {
+public abstract class Image implements IClickable {
     private TextureRegion imgTexture;
     private Rectangle rect;
     private float X, Y;
@@ -30,8 +31,6 @@ public abstract class Image {
         this(x, y);
         this.MoveSpeed = MoveSpeed;
     }
-
-    public abstract void OnClick();
 
     protected abstract void OnMoveStart();
 
