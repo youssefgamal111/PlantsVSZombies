@@ -2,6 +2,7 @@ package com.mygdx.game.Images.Cards;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.Factories.SelectionHandler;
 import com.mygdx.game.Factories.SunFactory;
@@ -10,6 +11,7 @@ import com.mygdx.game.Plants.Plant;
 
 public abstract class Card extends Image {
 
+    
     private final int Price;
     private final TextureRegion selected, unselected;
 

@@ -26,7 +26,7 @@ public class SunFactory {
     public static void DropSun() {
         int x = (int) ((Math.random() * ((350 - 200) + 1)) + 200);
         int y = (int) ((Math.random() * ((300 - 100) + 1)) + 100);
-        FloatingSun s = new FloatingSun(x, 500);
+        FloatingSun s = new FloatingSun(x, 500,null);
         s.Move(x, y);
         GameObjectFactory.AddGameObject(s);
     }

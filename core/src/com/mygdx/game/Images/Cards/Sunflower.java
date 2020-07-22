@@ -3,12 +3,12 @@ package com.mygdx.game.Images.Cards;
 import com.mygdx.game.Plants.Plant;
 
 public class Sunflower extends Card {
-    Sunflower() {
+    public Sunflower() {
         super(50, "Cards/sunflower.png");
     }
 
     @Override
     public Plant GetPlant() {
-        return null;
+        return new com.mygdx.game.Plants.SunFlower(0, 0);
     }
 }

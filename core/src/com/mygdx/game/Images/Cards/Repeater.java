@@ -4,11 +4,11 @@ import com.mygdx.game.Plants.Plant;
 
 public class Repeater extends Card {
     public Repeater() {
-        super(100, "Cards/Repeater.png");
+        super(150, "Cards/Repeater.png");
     }
 
     @Override
     public Plant GetPlant() {
-        return null;
+        return new com.mygdx.game.Plants.Repeater(0, 0);
     }
 }

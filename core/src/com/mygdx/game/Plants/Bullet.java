@@ -7,7 +7,7 @@ import com.mygdx.game.IDamageable;
 import com.mygdx.game.IExplodeable;
 
 public abstract class Bullet extends GameObject implements IAttacker, IExplodeable {
-    private Sound sound;
+    Sound sound;
     private final int Power;
 
     public Bullet(float moveSpeed, float x, float y, int Power) {

@@ -1,5 +1,7 @@
 package com.mygdx.game.Factories;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Images.Cards.Card;
 import com.mygdx.game.Images.Image;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ImageFactory {
+    private final static BitmapFont font = new BitmapFont(Gdx.files.internal("fonts\\javaprices.fnt"), false);
     private static PlantVsZombies Game;
     private static ArrayList<Image> Images;
     private static ArrayList<Image> ImagesToAdd;
@@ -19,11 +22,12 @@ public class ImageFactory {
         ImagesToAdd = new ArrayList<>();
     }
 
-    public static void Render() {
+    public static void Render() {int counter=1;
         for (Iterator<Image> iterator = Images.iterator(); iterator.hasNext(); ) {
             Image img = iterator.next();
             img.Render();
             Game.batch.draw(img.getImgTexture(), img.getX(), img.getY());
+            if(img instanceof Card){ font.draw(Game.batch, String.valueOf(((Card) img).getPrice()), img.getX()+70, img.getY()+20);}
             if (img.isCanRemove())
                 iterator.remove();
         }

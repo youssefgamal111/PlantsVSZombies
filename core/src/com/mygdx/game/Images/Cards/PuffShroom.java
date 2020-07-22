@@ -9,6 +9,6 @@ public class PuffShroom extends Card {
 
     @Override
     public Plant GetPlant() {
-        return null;
+        return new com.mygdx.game.Plants.PuffShroom(0, 0);
     }
 }
