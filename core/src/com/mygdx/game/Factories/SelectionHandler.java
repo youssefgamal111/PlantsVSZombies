@@ -19,6 +19,8 @@ public class SelectionHandler {
             return;
         if (place == null || place.getObj() != null)
             return;
+        if (!SelectedCard.CanUse())
+            return;
         Plant plant = SelectedCard.GetPlant();
         plant.setX(place.iX + 10);
         plant.setY(place.iY + plant.getHeight() / 2);

@@ -4,7 +4,7 @@ import com.mygdx.game.Plants.Plant;
 
 public class PeaShooter extends Card {
     public PeaShooter() {
-        super(100, "Cards/Peashooter.png");
+        super(100, 5, "Cards/Peashooter.png");
     }
 
     @Override

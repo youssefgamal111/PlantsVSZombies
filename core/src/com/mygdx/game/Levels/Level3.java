@@ -5,18 +5,20 @@ import com.mygdx.game.Factories.GameObjectFactory;
 import com.mygdx.game.Factories.ImageFactory;
 import com.mygdx.game.GameMap;
 import com.mygdx.game.Images.Cards.PeaShooter;
+import com.mygdx.game.Images.Cards.Repeater;
 import com.mygdx.game.PlantVsZombies;
 import com.mygdx.game.Plants.LawnCleaner;
 import com.mygdx.game.Timers.ZombieGeneratorTimer;
 import com.mygdx.game.Zombies.NormalZombie;
 
-public class Level1 extends World {
+public class Level3 extends World {
     private ZombieGeneratorTimer timer;
-    public Level1(PlantVsZombies game) {
+
+    public Level3(PlantVsZombies game) {
         super(game);
         this.background = new Texture("background1.jpg");
         this.Map = new GameMap(5);
-        timer = new ZombieGeneratorTimer(10f);
+        timer = new ZombieGeneratorTimer(6f);
         LoadObjects();
         ImageFactory.UpdateCards();
 
@@ -26,7 +28,7 @@ public class Level1 extends World {
         GameObjectFactory.AddZombie(new NormalZombie(0, 0), 2);
         timer.Start();
         ImageFactory.AddCard(new PeaShooter());
-        //ImageFactory.AddCard(new Repeater());
+        ImageFactory.AddCard(new Repeater());
         // ImageFactory.AddCard(new PuffShroom());
         // ImageFactory.AddCard(new Sunflower());
 

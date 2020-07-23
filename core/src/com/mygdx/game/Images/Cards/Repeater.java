@@ -4,7 +4,7 @@ import com.mygdx.game.Plants.Plant;
 
 public class Repeater extends Card {
     public Repeater() {
-        super(150, "Cards/Repeater.png");
+        super(150, 5, "Cards/Repeater.png");
     }
 
     @Override
