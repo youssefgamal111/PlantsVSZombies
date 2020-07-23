@@ -35,7 +35,6 @@ public class NormalZombie extends Zombie {
     protected void OnReceiveShot() {
         if (getHealth() == 5) {
             Walking = LostHeadWalking;
-            //SetCurrentAnimation(Walking);
             GameObjectFactory.AddGameObject(new NormalZombieHead(getX(), getY()));
             Attacking = LostHeadAttacking;
             if (state == State.Attacking)

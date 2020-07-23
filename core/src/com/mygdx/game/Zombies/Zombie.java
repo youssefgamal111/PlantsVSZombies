@@ -91,7 +91,8 @@ public abstract class Zombie extends GameObject implements IDamageable, IAttacke
 
     @Override
     public boolean CanAttack(GameObject obj) {
-        return getX() < obj.getX();
+        return getX() - obj.getX() < -10 && getX() - obj.getX() > -50f;
+
     }
 
 }

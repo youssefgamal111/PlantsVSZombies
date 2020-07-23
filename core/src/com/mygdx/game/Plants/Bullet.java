@@ -17,7 +17,8 @@ public abstract class Bullet extends GameObject implements IAttacker, IExplodeab
 
     @Override
     public boolean CanAttack(GameObject obj) {
-        return getX() > obj.getX() + 35;
+        float dist = (getX() - (obj.getX() + 35));
+        return dist > 0f && dist < 50f;
     }
 
     @Override
