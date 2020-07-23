@@ -38,10 +38,5 @@ public class Repeater extends Plant {
         pSound.play();
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-        timer.Remove();
-    }
 
 }
