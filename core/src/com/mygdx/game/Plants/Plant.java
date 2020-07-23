@@ -7,7 +7,7 @@ import com.mygdx.game.IAttacker;
 import com.mygdx.game.IDamageable;
 
 public abstract class Plant extends GameObject implements IDamageable {
-    protected Animation<TextureRegion> Attacking, Dying, Default;
+    public Animation<TextureRegion> Attacking, Dying, Default;
     private int Health;
 
     public Plant(float x, float y, int Health) {

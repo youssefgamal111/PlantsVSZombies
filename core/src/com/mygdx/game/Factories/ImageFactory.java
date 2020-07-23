@@ -22,12 +22,14 @@ public class ImageFactory {
         ImagesToAdd = new ArrayList<>();
     }
 
-    public static void Render() {int counter=1;
+    public static void Render() {
         for (Iterator<Image> iterator = Images.iterator(); iterator.hasNext(); ) {
             Image img = iterator.next();
             img.Render();
             Game.batch.draw(img.getImgTexture(), img.getX(), img.getY());
-            if(img instanceof Card){ font.draw(Game.batch, String.valueOf(((Card) img).getPrice()), img.getX()+70, img.getY()+20);}
+            if (img instanceof Card) {
+                font.draw(Game.batch, String.valueOf(((Card) img).getPrice()), img.getX() + 70, img.getY() + 20);
+            }
             if (img.isCanRemove())
                 iterator.remove();
         }

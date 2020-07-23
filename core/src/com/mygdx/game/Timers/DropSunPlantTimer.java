@@ -8,19 +8,19 @@ package com.mygdx.game.Timers;
 import com.mygdx.game.Plants.SunFlower;
 
 /**
- *
  * @author USER
  */
-public class DropSunPlantTimer  extends Timer{
-SunFlower sunflower;
+public class DropSunPlantTimer extends Timer {
+    SunFlower sunflower;
+
     public DropSunPlantTimer(SunFlower sunflower) {
         super(5f);
-        this.sunflower=sunflower;
+        this.sunflower = sunflower;
     }
 
     @Override
     public void task() {
         sunflower.Drop();
     }
-    
+
 }

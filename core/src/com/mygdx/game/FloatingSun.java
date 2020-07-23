@@ -4,17 +4,22 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.Factories.SunFactory;
-import com.mygdx.game.Plants.SunFlower;
+import com.mygdx.game.Plants.Plant;
 import com.mygdx.game.Timers.FloatingSunTimer;
 
 public class FloatingSun extends GameObject implements IClickable {
     private Animation<TextureRegion> FloatingSun;
     private final FloatingSunTimer timer;
-SunFlower sunflower;
-    public FloatingSun(float x, float y,SunFlower sunflower) {
+    private Plant Owner;
+
+    public FloatingSun(float x, float y) {
         super(30, x, y);
         timer = new FloatingSunTimer(this);
-        this.sunflower=sunflower;
+    }
+
+    public FloatingSun(float x, float y, Plant Owner) {
+        this(x, y);
+        this.Owner = Owner;
     }
 
     @Override
@@ -29,13 +34,13 @@ SunFlower sunflower;
         this.Stop();
         this.Remove();
         SunFactory.setCollectedSuns(SunFactory.getCollectedSuns() + 50);
-        if(sunflower!=null){ 
-            sunflower.SetCurrentAnimation(sunflower.d2);}
     }
 
     @Override
     protected void OnRemove() {
         timer.Remove();
+        if (Owner != null)
+            Owner.SetCurrentAnimation(Owner.Default);
     }
 
     @Override
