@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.Factories.GameObjectFactory;
 import com.mygdx.game.GifDecoder;
+import com.mygdx.game.State;
+
 
 public class NormalZombie extends Zombie {
     public NormalZombie(float x, float y) {
@@ -33,9 +35,13 @@ public class NormalZombie extends Zombie {
     protected void OnReceiveShot() {
         if (getHealth() == 5) {
             Walking = LostHeadWalking;
-            SetCurrentAnimation(Walking);
+            //SetCurrentAnimation(Walking);
             GameObjectFactory.AddGameObject(new NormalZombieHead(getX(), getY()));
             Attacking = LostHeadAttacking;
+            if (state == State.Attacking)
+                SetCurrentAnimation(Attacking);
+            else if (state == State.Moving)
+                SetCurrentAnimation(Walking);
         }
 
 

@@ -32,11 +32,6 @@ public class Puff extends Bullet {
 
     }
 
-    
-    public void OnClick() {
-
-    }
-
     @Override
     protected void OnRemove() {
     SetCurrentAnimation(Hit);

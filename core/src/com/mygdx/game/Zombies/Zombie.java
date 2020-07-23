@@ -68,7 +68,7 @@ public abstract class Zombie extends GameObject implements IDamageable, IAttacke
 
     @Override
     public void StartAttack(IDamageable object) {
-        if (state == State.Attacking)
+        if (state == State.Attacking || isCanRemove())
             return;
         Stop();
         SetCurrentAnimation(Attacking);
@@ -91,7 +91,7 @@ public abstract class Zombie extends GameObject implements IDamageable, IAttacke
 
     @Override
     public boolean CanAttack(GameObject obj) {
-
         return getX() < obj.getX();
     }
+
 }

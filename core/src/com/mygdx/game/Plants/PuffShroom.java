@@ -27,6 +27,11 @@ public class PuffShroom extends Plant {
         SetCurrentAnimation(Default);
     }
 
+    @Override
+    public void Remove() {
+        super.Remove();
+        timer.Remove();
+    }
 
     public void Shot() {
         Puff pp = new Puff(getX() + 35, getY() + 37);
