@@ -9,7 +9,7 @@ public class PuffShroomTimer extends Timer {
       private final PuffShroom puffShroom;
 
     public PuffShroomTimer(PuffShroom puffShroom) {
-        super(2.5f);
+        super(1.5f);
         this.puffShroom=puffShroom;
     }
 

@@ -46,12 +46,14 @@ public class ExitScreen implements Screen {
             {
                 this.dispose();
                 try {
+                    MainMenuScreen.bgSound.stop();
                     game.setScreen(new MainMenuScreen(game));
                 } catch (IOException ex) {
                     Logger.getLogger(ExitScreen.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
+        MainMenuScreen.font.draw(game.batch, MainMenuScreen.text,160,  548);
         game.batch.end();
     }
 

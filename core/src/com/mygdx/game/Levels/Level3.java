@@ -4,8 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.game.Factories.GameObjectFactory;
 import com.mygdx.game.Factories.ImageFactory;
 import com.mygdx.game.GameMap;
+import com.mygdx.game.Images.Cards.HugeWallNut;
 import com.mygdx.game.Images.Cards.PeaShooter;
-import com.mygdx.game.Images.Cards.Repeater;
 import com.mygdx.game.Images.Cards.Sunflower;
 import com.mygdx.game.PlantVsZombies;
 import com.mygdx.game.Plants.LawnCleaner;
@@ -32,7 +32,7 @@ public class Level3 extends World {
         timer.Start();
         ImageFactory.AddCard(new PeaShooter());
         ImageFactory.AddCard(new Sunflower());
-        ImageFactory.AddCard(new Repeater());
+        ImageFactory.AddCard(new HugeWallNut());
 
         int[][] rowCords = GameMap.RowCords;
         for (int i = 0; i < rowCords.length; i++) {

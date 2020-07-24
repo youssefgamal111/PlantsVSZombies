@@ -10,6 +10,6 @@ public class HugeWallNut extends Card {
 
     @Override
     public Plant GetPlant() {
-        return null;
+        return new com.mygdx.game.Plants.HugeWallNut(0, 0);
     }
 }

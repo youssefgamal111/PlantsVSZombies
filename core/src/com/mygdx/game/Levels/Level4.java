@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.game.Factories.GameObjectFactory;
 import com.mygdx.game.Factories.ImageFactory;
 import com.mygdx.game.GameMap;
+import com.mygdx.game.Images.Cards.HugeWallNut;
 import com.mygdx.game.Images.Cards.PeaShooter;
 import com.mygdx.game.Images.Cards.Repeater;
 import com.mygdx.game.Images.Cards.Sunflower;
@@ -32,6 +33,7 @@ public class Level4 extends World {
         timer.Start();
         ImageFactory.AddCard(new PeaShooter());
         ImageFactory.AddCard(new Sunflower());
+        ImageFactory.AddCard(new HugeWallNut());
         ImageFactory.AddCard(new Repeater());
 
         int[][] rowCords = GameMap.RowCords;

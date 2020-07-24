@@ -9,7 +9,7 @@ public class RepeaterTimer extends Timer {
       private final Repeater repeater;
 
     public RepeaterTimer(Repeater repeater) {
-        super(3f);
+        super(2f);
         this.repeater=repeater;
     }
 

@@ -3,9 +3,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.mygdx.game.Levels.*;
 import com.mygdx.game.Levels.World;
 import com.mygdx.game.PlantVsZombies;
+
 
 public class MainLevelScreen implements Screen  {
 
@@ -84,7 +86,7 @@ public class MainLevelScreen implements Screen  {
                     game.setScreen(new MainGameScreen(game,W));
                 }
          }
-         
+        MainMenuScreen.font.draw(game.batch, MainMenuScreen.text,160,  548);
         game.batch.end();
 
     }

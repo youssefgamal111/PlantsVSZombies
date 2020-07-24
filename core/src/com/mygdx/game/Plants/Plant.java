@@ -8,7 +8,7 @@ import com.mygdx.game.IDamageable;
 
 public abstract class Plant extends GameObject implements IDamageable {
     public Animation<TextureRegion> Attacking, Dying, Default;
-    private int Health;
+    int Health;
 
     public Plant(float x, float y, int Health) {
         super(0, x, y);

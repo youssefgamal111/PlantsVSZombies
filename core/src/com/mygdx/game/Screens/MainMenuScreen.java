@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.TextInputListener;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -17,8 +18,8 @@ import java.nio.file.Paths;
 
 public class MainMenuScreen implements Screen, Input.TextInputListener {
     PlantVsZombies game;
-    String text;
-    private final static BitmapFont font = new BitmapFont(Gdx.files.internal("fonts\\dwarventodcraft.ttf.fnt"), false);
+    public static String text;
+    public final static BitmapFont font = new BitmapFont(Gdx.files.internal("fonts\\dwarventodcraft.ttf.fnt"), false);
     private Texture BackGroundImg1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (234).png"));
     private Texture BackGroundImg2 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (235).png"));
     private Texture Exit1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (245).png"));
@@ -61,8 +62,6 @@ public class MainMenuScreen implements Screen, Input.TextInputListener {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
-        font.draw(game.batch, text,160,  550);
-
         if (game.getInputInGameWorld().x > 500 && game.getInputInGameWorld().x < 1000 &&
                 game.getInputInGameWorld().y < 640 - 50 && game.getInputInGameWorld().y > 640 - 200) {
             game.batch.draw(BackGroundImg2, 0, 0, 1080, 640);
@@ -84,8 +83,7 @@ public class MainMenuScreen implements Screen, Input.TextInputListener {
                 game.batch.draw(BackGroundImg1, 0, 0, 1080, 640);
             }
         }
-
-
+        font.draw(game.batch, text,160,  548);
         game.batch.end();
 
     }

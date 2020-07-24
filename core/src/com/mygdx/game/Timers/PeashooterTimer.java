@@ -9,7 +9,7 @@ public class PeashooterTimer extends Timer {
     private final PeaShooter peaShooter;
 
     public PeashooterTimer(PeaShooter peaShooter) {
-        super(3f);
+        super(2f);
         this.peaShooter = peaShooter;
     }
 

@@ -3,9 +3,11 @@ package com.mygdx.game.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
-import com.mygdx.game.Levels.Level5;
 import com.mygdx.game.Levels.World;
 import com.mygdx.game.PlantVsZombies;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class MainGameScreen implements Screen {
@@ -28,7 +30,11 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        w.Render();
+        try {
+            w.Render();
+        } catch (IOException ex) {
+            Logger.getLogger(MainGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
