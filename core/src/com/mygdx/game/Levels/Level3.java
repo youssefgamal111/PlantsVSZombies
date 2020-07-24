@@ -18,6 +18,8 @@ public class Level3 extends World {
         super(game);
         this.background = new Texture("background1.jpg");
         this.Map = new GameMap(5);
+        GameObjectFactory.setMap(Map);
+
         timer = new ZombieGeneratorTimer(6f);
         LoadObjects();
         ImageFactory.UpdateCards();

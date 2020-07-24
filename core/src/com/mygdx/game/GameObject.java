@@ -9,7 +9,7 @@ public abstract class GameObject implements IMoveable {
 	protected State state;
 	private float X;
 	private float Y;
-	public int Row;
+	public int Row, Column;
 	private boolean CanRemove;
 	private float TargetX, TargetY, animationElapsedTime;
 	private Animation<TextureRegion> currentAnimation;

@@ -25,6 +25,7 @@ public class SelectionHandler {
         plant.setX(place.iX + 10);
         plant.setY(place.iY + plant.getHeight() / 2);
         plant.Row = place.y;
+        plant.Column = place.x;
         place.setObj(plant);
         GameObjectFactory.AddGameObject(plant);
         SunFactory.setCollectedSuns(SunFactory.getCollectedSuns() - SelectedCard.getPrice());

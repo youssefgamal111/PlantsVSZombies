@@ -19,5 +19,7 @@ public class ZombieAttackTimer extends Timer {
     @Override
     public void task() {
         obj.ReceiveShot(zombie);
+        if (obj.getHealth() <= 0)
+            zombie.StopAttack();
     }
 }

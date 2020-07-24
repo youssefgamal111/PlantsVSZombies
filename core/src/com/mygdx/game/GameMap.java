@@ -39,6 +39,10 @@ public class GameMap {
         return null;
     }
 
+    public Place getPlace(int x, int y) {
+        return map[x][y];
+    }
+
     public int findRow(float x, float y) {
         Place result = findPlot(x, y);
         return result == null ? result.y : -1;

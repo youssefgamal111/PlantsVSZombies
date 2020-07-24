@@ -12,11 +12,16 @@ public class GameObjectFactory {
     private static ArrayList<GameObject> GameObjects;
     private static ArrayList<GameObject> GameObjectsToAdd;
     private static PlantVsZombies Game;
+    private static GameMap Map;
 
     public static void initialize(PlantVsZombies game) {
         Game = game;
         GameObjects = new ArrayList<>();
         GameObjectsToAdd = new ArrayList<>();
+    }
+
+    public static void setMap(GameMap map) {
+        Map = map;
     }
 
     public static void ShotTest() {
@@ -44,6 +49,9 @@ public class GameObjectFactory {
         for (Iterator<GameObject> iterator = GameObjects.iterator(); iterator.hasNext(); ) {
             GameObject gameObject = iterator.next();
             if (gameObject.CanRemove()) {
+                if (gameObject instanceof Plant)
+                    Map.getPlace(gameObject.Row, gameObject.Column).setObj(null);
+
                 iterator.remove();
                 continue;
             }
@@ -98,13 +106,6 @@ public class GameObjectFactory {
         AddGameObject(z);
     }
 
-    public static void AddPlant(Plant plant, Place place) {
-        plant.setX(place.iX + 10);
-        plant.setY(place.iY + plant.getHeight() / 2);
-        plant.Row = place.y;
-        place.setObj(plant);
-        AddGameObject(plant);
-    }
 
     public static void AddGameObject(GameObject p) {
         GameObjectsToAdd.add(p);
