@@ -25,7 +25,7 @@ public class MainMenuScreen implements Screen, Input.TextInputListener {
     static Sound bgSound;
     public MainMenuScreen(PlantVsZombies game) throws FileNotFoundException, IOException {
         this.game = game;
-        String filePath = "data.txt";
+        String filePath = "MainMenuScreen/data.txt";
         text = readUser(filePath);
         if (text.isBlank())
         {
