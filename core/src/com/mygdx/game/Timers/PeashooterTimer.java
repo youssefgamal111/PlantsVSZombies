@@ -9,7 +9,7 @@ public class PeashooterTimer extends Timer {
     private final PeaShooter peaShooter;
 
     public PeashooterTimer(PeaShooter peaShooter) {
-        super(1.5f);
+        super(3f);
         this.peaShooter = peaShooter;
     }
 
@@ -17,7 +17,7 @@ public class PeashooterTimer extends Timer {
     public void task() {
         for (GameObject obj : GameObjectFactory.GetObjectsInRow(peaShooter.Row)) {
             if (obj instanceof Zombie) {
-                if (obj.getX() > peaShooter.getX())
+                if (obj.getX() > peaShooter.getX()-50)
                     peaShooter.Shot();
                 return;
             }

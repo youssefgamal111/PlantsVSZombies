@@ -14,7 +14,7 @@ public class DropSunPlantTimer extends Timer {
     SunFlower sunflower;
 
     public DropSunPlantTimer(SunFlower sunflower) {
-        super(5f);
+        super(6f);
         this.sunflower = sunflower;
     }
 

@@ -9,7 +9,7 @@ public class RepeaterTimer extends Timer {
       private final Repeater repeater;
 
     public RepeaterTimer(Repeater repeater) {
-        super(1.5f);
+        super(3f);
         this.repeater=repeater;
     }
 
@@ -20,6 +20,7 @@ public class RepeaterTimer extends Timer {
     public void task() {
         for (GameObject obj : GameObjectFactory.GetObjectsInRow(repeater.Row)) {
             if (obj instanceof Zombie) {
+                if (obj.getX() > repeater.getX()-50)
                 repeater.Shot();
                 return;
             }

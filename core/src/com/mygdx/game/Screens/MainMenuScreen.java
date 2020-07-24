@@ -2,23 +2,53 @@ package com.mygdx.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.TextInputListener;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.mygdx.game.PlantVsZombies;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class MainMenuScreen implements Screen, Input.TextInputListener {
     PlantVsZombies game;
     String text;
+    private final static BitmapFont font = new BitmapFont(Gdx.files.internal("fonts\\dwarventodcraft.ttf.fnt"), false);
     private Texture BackGroundImg1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (234).png"));
     private Texture BackGroundImg2 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (235).png"));
     private Texture Exit1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (245).png"));
     static Sound bgSound;
-    public MainMenuScreen(PlantVsZombies game) {
+    public MainMenuScreen(PlantVsZombies game) throws FileNotFoundException, IOException {
         this.game = game;
+        String filePath = "data.txt";
+        text = readUser(filePath);
+        if (text.isBlank())
+        {
+            TextInputListener  listener = new TextInputListener () {
+                @Override
+                public void input(String string) {
+                    text= string;
+                }
+
+                @Override
+                public void canceled() {
+                }
+            };
+            Gdx.input.getTextInput(listener, "New User", "", "Enter Your Name!");
+            FileOutputStream out = new FileOutputStream(filePath);
+ 
+            out.write(text.getBytes());
+            out.close();
+        }
+        
          bgSound = Gdx.audio.newSound(Gdx.files.internal("MainMenuScreen\\intro.wav")); 
          bgSound.loop();
+
     }
 
     @Override
@@ -31,16 +61,15 @@ public class MainMenuScreen implements Screen, Input.TextInputListener {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
+        font.draw(game.batch, text,160,  550);
 
         if (game.getInputInGameWorld().x > 500 && game.getInputInGameWorld().x < 1000 &&
                 game.getInputInGameWorld().y < 640 - 50 && game.getInputInGameWorld().y > 640 - 200) {
             game.batch.draw(BackGroundImg2, 0, 0, 1080, 640);
             if (Gdx.input.isTouched()) {
-                  // Gdx.input.getTextInput(this,"Title","Default text","");
-                //   Gdx.app.log("Text",text);
                 this.dispose();
-                game.setScreen(new MainGameScreen(game));
-                MainMenuScreen.bgSound.stop();
+                game.setScreen(new MainLevelScreen(game));
+                //MainMenuScreen.bgSound.stop();
             }
         } else {
             game.batch.draw(BackGroundImg1, 0, 0, 1080, 640);
@@ -95,4 +124,20 @@ public class MainMenuScreen implements Screen, Input.TextInputListener {
     public void canceled() {
         text = "Cancelled";
     }
+      private static String readUser(String filePath) 
+    {
+        String content = "";
+ 
+        try
+        {
+            content = new String ( Files.readAllBytes( Paths.get(filePath) ) );
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
+ 
+        return content;
+    }
+     
 }

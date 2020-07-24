@@ -13,9 +13,10 @@ public class MainGameScreen implements Screen {
     World w;
     Sound mgSound;
 
-    public MainGameScreen(PlantVsZombies game) {
+    public MainGameScreen(PlantVsZombies game,World W1) {
         this.game = game;
-        w = new Level5(game);
+        w = W1;
+        MainMenuScreen.bgSound.stop();
         mgSound = Gdx.audio.newSound(Gdx.files.internal("MainMenuScreen\\dayBG.wav"));
         mgSound.loop();
     }

@@ -9,6 +9,9 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.Screens.MainMenuScreen;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PlantVsZombies extends Game {
 
@@ -25,7 +28,11 @@ public class PlantVsZombies extends Game {
         gameport.apply();
         gamecam.position.set(WIDTH / 2, HEIGHT / 2, 0);
         gamecam.update();
-        this.setScreen(new MainMenuScreen(this));
+        try {
+            this.setScreen(new MainMenuScreen(this));
+        } catch (IOException ex) {
+            Logger.getLogger(PlantVsZombies.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

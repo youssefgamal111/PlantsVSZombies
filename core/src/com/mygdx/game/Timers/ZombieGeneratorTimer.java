@@ -12,7 +12,7 @@ public class ZombieGeneratorTimer extends Timer {
 
     @Override
     public void task() {
-        GameObjectFactory.AddZombie(new NormalZombie(0, 0), new Random().nextInt(4));
+        GameObjectFactory.AddZombie(new NormalZombie(0, 0), new Random().nextInt(5));
 
     }
 }
