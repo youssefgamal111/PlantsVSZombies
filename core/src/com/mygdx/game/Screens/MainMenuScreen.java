@@ -10,11 +10,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.mygdx.game.PlantVsZombies;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.attribute.FileAttribute;
 
 public class MainMenuScreen implements Screen, Input.TextInputListener {
     PlantVsZombies game;
@@ -26,7 +29,7 @@ public class MainMenuScreen implements Screen, Input.TextInputListener {
     static Sound bgSound;
     public MainMenuScreen(PlantVsZombies game) throws FileNotFoundException, IOException {
         this.game = game;
-        String filePath = "MainMenuScreen/data.txt";
+        String filePath = "ata.txt";
         text = readUser(filePath);
         if (text.isBlank())
         {
@@ -125,10 +128,9 @@ public class MainMenuScreen implements Screen, Input.TextInputListener {
       private static String readUser(String filePath) 
     {
         String content = "";
- 
         try
         {
-            content = new String ( Files.readAllBytes( Paths.get(filePath) ) );
+            content = new String ( Files.readAllBytes(Paths.get(filePath)) );
         } 
         catch (IOException e) 
         {
