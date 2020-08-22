@@ -12,7 +12,7 @@ public class Repeater extends Plant {
     private static Sound pSound;
 
     public Repeater(float x, float y) {
-        super(x, y, 50);
+        super(x, y, 10);
         timer = new RepeaterTimer(this);
         timer.Start();
         pSound = Gdx.audio.newSound(Gdx.files.internal("Peashooter\\pea_shoot_1.wav"));

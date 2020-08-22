@@ -5,6 +5,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.game.PlantVsZombies;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ExitScreen implements Screen {
     PlantVsZombies game;
@@ -42,9 +45,15 @@ public class ExitScreen implements Screen {
             if (Gdx.input.isTouched())
             {
                 this.dispose();
-                game.setScreen(new MainMenuScreen(game));
+                try {
+                    MainMenuScreen.bgSound.stop();
+                    game.setScreen(new MainMenuScreen(game));
+                } catch (IOException ex) {
+                    Logger.getLogger(ExitScreen.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
+        MainMenuScreen.font.draw(game.batch, MainMenuScreen.text,160,  548);
         game.batch.end();
     }
 

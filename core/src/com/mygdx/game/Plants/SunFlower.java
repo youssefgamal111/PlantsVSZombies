@@ -16,7 +16,7 @@ public class SunFlower extends Plant {
 
 
     public SunFlower(float x, float y) {
-        super(x, y, 50);
+        super(x, y, 8);
         dropsunPlanttimer = new DropSunPlantTimer(this);
         dropsunPlanttimer.Start();
 

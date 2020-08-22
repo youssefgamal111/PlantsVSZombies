@@ -8,6 +8,7 @@ import com.mygdx.game.Factories.*;
 import com.mygdx.game.GameMap;
 import com.mygdx.game.Place;
 import com.mygdx.game.PlantVsZombies;
+import java.io.IOException;
 
 public abstract class World {
     private PlantVsZombies Game;
@@ -23,7 +24,7 @@ public abstract class World {
 
     public Texture background;
 
-    public void Render() {
+    public void Render() throws IOException {
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Game.batch.begin();

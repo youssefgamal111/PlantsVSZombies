@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Images.Cards.Card;
 import com.mygdx.game.Images.Image;
 import com.mygdx.game.PlantVsZombies;
+import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,7 +38,7 @@ public class ImageFactory {
         ImagesToAdd.clear();
     }
 
-    public static void RenderTouch(Vector2 coords) {
+    public static void RenderTouch(Vector2 coords) throws IOException {
         for (int i = 0; i < Images.size(); i++) {
             Image img = Images.get(i);
             if (img.getRect().contains(coords)) {

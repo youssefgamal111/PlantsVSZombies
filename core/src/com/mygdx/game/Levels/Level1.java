@@ -28,9 +28,6 @@ public class Level1 extends World {
         GameObjectFactory.AddZombie(new NormalZombie(0, 0), 2);
         timer.Start();
         ImageFactory.AddCard(new PeaShooter());
-        //ImageFactory.AddCard(new Repeater());
-        // ImageFactory.AddCard(new PuffShroom());
-        // ImageFactory.AddCard(new Sunflower());
 
 
         int[][] rowCords = GameMap.RowCords;

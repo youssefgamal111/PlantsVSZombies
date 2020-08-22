@@ -5,7 +5,7 @@ import com.mygdx.game.Plants.SunFlower;
 
 public class DropSunTimer extends Timer {
     public DropSunTimer() {
-        super(5f);
+        super(6f);
     }
 
     @Override

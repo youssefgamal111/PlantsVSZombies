@@ -12,7 +12,7 @@ public class PuffShroom extends Plant {
     private static Sound pSound;
 
     public PuffShroom(float x, float y) {
-        super(x, y, 20);
+        super(x, y, 10);
         timer = new PuffShroomTimer(this);
         timer.Start();
         pSound = Gdx.audio.newSound(Gdx.files.internal("Peashooter\\pea_shoot_1.wav"));

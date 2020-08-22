@@ -10,7 +10,7 @@ import com.mygdx.game.State;
 
 public class NormalZombie extends Zombie {
     public NormalZombie(float x, float y) {
-        super(10, x, y, 10, 2);
+        super(10, x, y, 10,2);
     }
 
     protected Animation<TextureRegion> Standing, NormalAttacking, LostHeadAttacking, NormalWalking, LostHeadWalking;
