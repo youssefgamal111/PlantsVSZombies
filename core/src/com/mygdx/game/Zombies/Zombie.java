@@ -5,7 +5,10 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.*;
+import com.mygdx.game.Screens.MainMenuScreen;
 import com.mygdx.game.Timers.ZombieAttackTimer;
+
+import java.io.IOException;
 
 public abstract class Zombie extends GameObject implements IDamageable, IAttacker {
     protected Animation<TextureRegion> Walking, Attacking, Dying, Default;
@@ -41,7 +44,11 @@ public abstract class Zombie extends GameObject implements IDamageable, IAttacke
     @Override
     public void OnMoveFinished() {
         SetCurrentAnimation(Default);
-
+        try {
+            MainMenuScreen.game.setScreen(new MainMenuScreen(MainMenuScreen.game));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

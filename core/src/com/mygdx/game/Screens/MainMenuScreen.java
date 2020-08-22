@@ -5,38 +5,34 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.TextInputListener;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.mygdx.game.PlantVsZombies;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.attribute.FileAttribute;
 
 public class MainMenuScreen implements Screen, Input.TextInputListener {
-    PlantVsZombies game;
+    public static PlantVsZombies game;
     public static String text;
     public final static BitmapFont font = new BitmapFont(Gdx.files.internal("fonts\\dwarventodcraft.ttf.fnt"), false);
     private Texture BackGroundImg1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (234).png"));
     private Texture BackGroundImg2 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (235).png"));
     private Texture Exit1 = new Texture(Gdx.files.internal("MainMenuScreen/Screenshot (245).png"));
     static Sound bgSound;
-    public MainMenuScreen(PlantVsZombies game) throws FileNotFoundException, IOException {
-        this.game = game;
+
+    public MainMenuScreen(PlantVsZombies game) throws IOException {
+        MainMenuScreen.game = game;
         String filePath = "data.txt";
         text = readUser(filePath);
-        if (text.isEmpty())
-        {
-            TextInputListener  listener = new TextInputListener () {
+        if (text.isEmpty()) {
+            TextInputListener listener = new TextInputListener() {
                 @Override
                 public void input(String string) {
-                    text= string;
+                    text = string;
                 }
 
                 @Override
@@ -118,7 +114,7 @@ public class MainMenuScreen implements Screen, Input.TextInputListener {
 
     @Override
     public void input(String text) {
-        this.text = text;
+        MainMenuScreen.text = text;
     }
 
     @Override
