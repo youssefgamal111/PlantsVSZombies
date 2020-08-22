@@ -41,6 +41,7 @@ public abstract class Zombie extends GameObject implements IDamageable, IAttacke
     @Override
     public void OnMoveFinished() {
         SetCurrentAnimation(Default);
+
     }
 
     @Override
